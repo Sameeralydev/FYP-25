@@ -97,47 +97,72 @@ function App() {
               <div className="min-h-screen bg-white">
                 {/* Hero Section */}
                 <section
-                  className="relative h-screen bg-cover bg-center bg-no-repeat"
+                  className="relative h-[90vh] min-h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
                   style={{
                     backgroundImage:
                       "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop')",
                     transform: `translateY(${scrollY * 0.1}px)`,
                   }}
                 >
-                  <div className="absolute top-[83vh] left-[15%] bg-white w-[70%] h-[35vh] flex items-center justify-space-between p-4 shadow-xl">
-                    <div className="m-8">
-                    <div className="w-44 h-44 bg-white p-2 rounded hover:shadow-lg transition-shadow duration-300">
-                      <div className="w-full h-full bg-black flex items-center justify-center text-white text-xs cursor-pointer">
-                        QR CODE
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-[55%] flex flex-col gap-2 mr-8">
-                    <h1 className="font-bold font-serif text-2xl mb-4">LA RUKICO CUSTOM SUIT TAILORS</h1>
-                    <p className="text-gray-900">5 Star Rated 
-                    <span className="font-bold"> Custom Suit tailor in NYC </span> 
-                    with more than 45 years of experience.
-                    Premium Custom tailored suits in NYC, New York. Perfect Fit Guarantee on custom clothing.
-                    Our New York City based <span className="font-bold">bespoke tailors</span> create full custom suits, nothing is “made-to-measure”.</p>
-                  </div>
-                  <button className="btn-primary w-40 bg-transparent text-[#C29A5C] font-serif text-xl border border-[#C29A5C]
-                  hover:bg-[#C29A5C] hover:text-white duration-200">Contact Us</button>
-                  </div>
-
-
-
+                  {/* Overlay content */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-white animate-fade-in">
-                      <h1 className="text-6xl md:text-9xl font-serif mb-4 -tracking-normal">
+                    <div className="text-center text-white animate-fade-in px-2">
+                      <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif mb-4 -tracking-normal leading-tight">
                         Finest Custom
                         <br />
                         Suits in NYC
                       </h1>
                     </div>
                   </div>
-                </section>
 
-                {/* As Seen on Location Section */}
+                  {/* Info Card */}
+                  <div
+                    className="
+                      absolute
+                      left-1/2
+                      bottom-8
+                      transform -translate-x-1/2
+                      w-[95%] max-w-5xl
+                      bg-white
+                      rounded-lg
+                      shadow-xl
+                      flex flex-col md:flex-row
+                      items-center
+                      justify-between
+                      p-4 md:p-8
+                      gap-4 md:gap-0
+                    "
+                  >
+                    {/* QR Code */}
+                    <div className="mb-4 md:mb-0 md:mr-8 flex-shrink-0 flex justify-center w-full md:w-auto">
+                      <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 bg-white p-2 rounded hover:shadow-lg transition-shadow duration-300 flex items-center justify-center">
+                        <div className="w-full h-full bg-black flex items-center justify-center text-white text-xs cursor-pointer">
+                          QR CODE
+                        </div>
+                      </div>
+                    </div>
+                    {/* Text */}
+                    <div className="flex-1 w-full md:w-auto flex flex-col gap-2 md:mr-8">
+                      <h1 className="font-bold font-serif text-lg sm:text-xl md:text-2xl mb-2 md:mb-4">
+                        LA RUKICO CUSTOM SUIT TAILORS
+                      </h1>
+                      <p className="text-gray-900 text-sm sm:text-base">
+                        5 Star Rated
+                        <span className="font-bold"> Custom Suit tailor in NYC </span>
+                        with more than 45 years of experience.
+                        Premium Custom tailored suits in NYC, New York. Perfect Fit Guarantee on custom clothing.
+                        Our New York City based <span className="font-bold">bespoke tailors</span> create full custom suits, nothing is “made-to-measure”.
+                      </p>
+                    </div>
+                    {/* Button */}
+                    <div className="mt-4 md:mt-0 flex-shrink-0">
+                      <button className="btn-primary w-32 sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
+                        hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded">
+                        Contact Us
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <section className="mt-32 py-20 bg-stone-50">
                   <div className="mt-5 max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
                     <div className="overflow-hidden rounded-lg">
