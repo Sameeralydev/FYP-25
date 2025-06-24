@@ -14,6 +14,8 @@ import Services from "./pages/Services"
 import Gallery from "./pages/Gallery"
 import Process from "./pages/Process"
 import Contact from "./pages/Contact"
+import banner from "./assets/banner.jpg"
+import './App.css'
 
 function App() {
   const [activeStep, setActiveStep] = useState(0)
@@ -100,14 +102,14 @@ function App() {
                   className="relative h-[90vh] min-h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
                   style={{
                     backgroundImage:
-                      "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop')",
+                      `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${banner})`,
                     transform: `translateY(${scrollY * 0.1}px)`,
                   }}
                 >
                   {/* Overlay content */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white animate-fade-in px-2">
-                      <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif mb-4 -tracking-normal leading-tight">
+                      <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold eb-garamond-google mb-4 -tracking-normal leading-tight">
                         Finest Custom
                         <br />
                         Suits in NYC
@@ -120,7 +122,7 @@ function App() {
                     className="
                       absolute
                       left-1/2
-                      bottom-8
+                      top-[77vh]
                       transform -translate-x-1/2
                       w-[95%] max-w-5xl
                       bg-white
@@ -143,7 +145,7 @@ function App() {
                     </div>
                     {/* Text */}
                     <div className="flex-1 w-full md:w-auto flex flex-col gap-2 md:mr-8">
-                      <h1 className="font-bold font-serif text-lg sm:text-xl md:text-2xl mb-2 md:mb-4">
+                      <h1 className="font-bold eb-garamond-google text-lg sm:text-xl md:text-2xl mb-2 md:mb-4">
                         LA RUKICO CUSTOM SUIT TAILORS
                       </h1>
                       <p className="text-gray-900 text-sm sm:text-base">

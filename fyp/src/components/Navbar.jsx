@@ -3,6 +3,10 @@ import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "../context/ThemeContext"
+import logo from '../assets/logo.png'
+import '../App.css'
+import '../index.css'
+
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true)
@@ -55,14 +59,14 @@ const Navbar = () => {
           animate={{ y: 0 }}
           exit={{ y: -100 }}
           transition={{ duration: 0.3 }}
-          className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700"
+          className="fixed top-0 left-0 right-0 z-50 bg-transparent"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+            <div className="flex justify-between items-center h-[15vh]  ">
               {/* Logo */}
               <Link to="/" className="flex items-center space-x-2">
                 <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold text-gray-800 dark:text-white">
-                  NYC Suit
+                  <img src={logo} alt="NYC Suit" className="h-24" />
                 </motion.div>
               </Link>
 
@@ -72,7 +76,7 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                    className={`relative px-3 py-2 text-lg font-bold transition-colors duration-200 eb-garamond-google ${
                       location.pathname === item.path
                         ? "text-gray-800 dark:text-white"
                         : "text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
