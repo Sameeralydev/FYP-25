@@ -7,6 +7,12 @@ import logo from '../assets/logo.png'
 import '../App.css'
 import '../index.css'
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFacebookF, faInstagram, faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+library.add(faFacebookF, faInstagram, faXTwitter, faLinkedinIn);
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true)
@@ -25,11 +31,14 @@ const Navbar = () => {
   ]
 
   const socialLinks = [
-    { name: "Facebook", icon: "📘", url: "https://facebook.com" },
-    { name: "Instagram", icon: "📷", url: "https://instagram.com" },
-    { name: "Twitter", icon: "🐦", url: "https://twitter.com" },
-    { name: "LinkedIn", icon: "💼", url: "https://linkedin.com" },
-  ]
+    { icon: faFacebookF, url: 'https://facebook.com' },
+    { icon: faInstagram, url: 'https://instagram.com' },
+    { icon: faXTwitter, url: 'https://twitter.com' },
+    { icon: faLinkedinIn, url: 'https://linkedin.com' },
+  ];
+
+
+
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -94,27 +103,30 @@ const Navbar = () => {
               </div>
 
               {/* Social Links & Theme Toggle */}
-              <div className="hidden md:flex items-center space-x-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+              <div className="hidden md:flex items-center space-x-4  ">
+                {socialLinks.map((link, index) => (
+                  <motion.button
+                    key={index}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="text-lg hover:opacity-70 transition-opacity duration-200"
-                    title={social.name}
+                    onClick={toggleTheme}
+                    className="p-2 rounded-lg bg-transparent dark:bg-transparent text-gray-800 dark:text-white transition-colors duration-200"
+                    title="Toggle theme"
                   >
-                    {social.icon}
-                  </motion.a>
+                    <FontAwesomeIcon icon={link.icon} />
+                  </motion.button>
                 ))}
+
+
+
+
+
 
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={toggleTheme}
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-200"
+                  className="p-2 rounded-lg bg-transparent dark:bg-transparent text-gray-800 dark:text-white transition-colors duration-200"
                   title="Toggle theme"
                 >
                   {isDark ? "☀️" : "🌙"}
@@ -167,11 +179,10 @@ const Navbar = () => {
                         key={item.name}
                         to={item.path}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                          location.pathname === item.path
-                            ? "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white"
-                            : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white"
-                        }`}
+                        className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${location.pathname === item.path
+                          ? "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white"
+                          : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white"
+                          }`}
                       >
                         {item.name}
                       </Link>
