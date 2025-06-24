@@ -1,43 +1,44 @@
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
-import ProcessStep from "@/components/ProcessStep"
-import TestimonialCard from "@/components/TestimonialCard"
-import ImageGallery from "@/components/ImageGallery"
-import { useScrollAnimation } from "@/hooks/useScrollAnimation"
-import { Routes, Route } from "react-router-dom"
-import { ThemeProvider } from "./context/ThemeContext"
-import Navbar from "./components/Navbar"
-import About from "./pages/About"
-import Services from "./pages/Services"
-import Gallery from "./pages/Gallery"
-import Process from "./pages/Process"
-import Contact from "./pages/Contact"
-import banner from "./assets/banner.jpg"
-import './App.css'
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import ProcessStep from "@/components/ProcessStep";
+import TestimonialCard from "@/components/TestimonialCard";
+import ImageGallery from "@/components/ImageGallery";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
+import Navbar from "./components/Navbar";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Gallery from "./pages/Gallery";
+import Process from "./pages/Process";
+import Contact from "./pages/Contact";
+import banner from "./assets/banner.jpg";
+import bespoke from "./assets/bespoke.jpg";
+import "./App.css";
 
 function App() {
-  const [activeStep, setActiveStep] = useState(0)
-  const { scrollY } = useScrollAnimation()
+  const [activeStep, setActiveStep] = useState(0);
+  const { scrollY } = useScrollAnimation();
 
   // Auto-advance process steps
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % 5)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
+      setActiveStep((prev) => (prev + 1) % 5);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Handle consultation booking
   const handleConsultationClick = () => {
-    alert("Consultation booking functionality would be implemented here!")
-  }
+    alert("Consultation booking functionality would be implemented here!");
+  };
 
   // Handle appointment booking
   const handleAppointmentClick = () => {
-    alert("Appointment booking functionality would be implemented here!")
-  }
+    alert("Appointment booking functionality would be implemented here!");
+  };
 
   // Process steps data
   const processSteps = [
@@ -61,32 +62,37 @@ function App() {
       title: "Final Fitting",
       description: "Final adjustments and delivery",
     },
-  ]
+  ];
 
   // Testimonials data
   const testimonials = [
     {
       rating: 5,
-      testimonial: "Exceptional craftsmanship and attention to detail. My suit fits perfectly and looks incredible.",
+      testimonial:
+        "Exceptional craftsmanship and attention to detail. My suit fits perfectly and looks incredible.",
       author: "Michael R.",
     },
     {
       rating: 5,
-      testimonial: "The best investment I've made in my wardrobe. Truly bespoke quality.",
+      testimonial:
+        "The best investment I've made in my wardrobe. Truly bespoke quality.",
       author: "David L.",
     },
     {
       rating: 5,
-      testimonial: "Outstanding service from consultation to final fitting. Highly recommended.",
+      testimonial:
+        "Outstanding service from consultation to final fitting. Highly recommended.",
       author: "James K.",
     },
-  ]
+  ];
 
   // Process gallery images
   const processImages = Array.from({ length: 16 }, (_, i) => ({
-    src: `https://images.unsplash.com/photo-${1556905055 + i}-8f358a7a47b2?w=200&h=200&fit=crop`,
+    src: `https://images.unsplash.com/photo-${
+      1556905055 + i
+    }-8f358a7a47b2?w=200&h=200&fit=crop`,
     alt: `Process step ${i + 1}`,
-  }))
+  }));
 
   return (
     <ThemeProvider>
@@ -101,18 +107,17 @@ function App() {
                 <section
                   className="relative h-[90vh] min-h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
                   style={{
-                    backgroundImage:
-                      `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${banner})`,
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${banner})`,
                     transform: `translateY(${scrollY * 0.1}px)`,
                   }}
                 >
                   {/* Overlay content */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white animate-fade-in px-2">
-                      <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold eb-garamond-google mb-4 -tracking-normal leading-tight">
+                      <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl drop-shadow-4xl font-extrabold eb-garamond-google mb-4 -tracking-normal leading-tight">
                         Finest Custom
                         <br />
-                        Suits in NYC
+                        Suits in PAK
                       </h1>
                     </div>
                   </div>
@@ -146,45 +151,70 @@ function App() {
                     {/* Text */}
                     <div className="flex-1 w-full md:w-auto flex flex-col gap-2 md:mr-8">
                       <h1 className="font-bold eb-garamond-google text-lg sm:text-xl md:text-2xl mb-2 md:mb-4">
-                        LA RUKICO CUSTOM SUIT TAILORS
+                        SEW DIVINE CUSTOM SUIT TAILORS
                       </h1>
                       <p className="text-gray-900 text-sm sm:text-base">
                         5 Star Rated
-                        <span className="font-bold"> Custom Suit tailor in NYC </span>
-                        with more than 45 years of experience.
-                        Premium Custom tailored suits in NYC, New York. Perfect Fit Guarantee on custom clothing.
-                        Our New York City based <span className="font-bold">bespoke tailors</span> create full custom suits, nothing is “made-to-measure”.
+                        <span className="font-bold">
+                          {" "}
+                          Custom Suit tailor in PAK{" "}
+                        </span>
+                        with more than 45 years of experience. Premium Custom
+                        tailored suits in PAK, LAHORE. Perfect Fit Guarantee on
+                        custom clothing. Our Lahore City based{" "}
+                        <span className="font-bold">bespoke tailors</span>{" "}
+                        create full custom suits, nothing is “made-to-measure”.
                       </p>
                     </div>
                     {/* Button */}
                     <div className="mt-4 md:mt-0 flex-shrink-0">
-                      <button className="btn-primary w-32 sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
-                        hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded">
+                      <button
+                        className="btn-primary w-32 sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
+                        hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded"
+                      >
                         Contact Us
                       </button>
                     </div>
                   </div>
                 </section>
                 <section className="mt-32 py-20 bg-stone-50">
-                  <div className="mt-5 max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                  <div className="mt-5 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
                     <div className="overflow-hidden rounded-lg">
                       <img
-                        src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=600&fit=crop"
+                        src={bespoke}
                         alt="Man in custom suit"
-                        className="w-full h-auto hover:scale-105 transition-transform duration-500"
+                        className="w-full h-[70vh] hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                     <div className="space-y-6">
-                      <h2 className="text-4xl font-light text-gray-800">As Seen on Location</h2>
+                      <h2 className="text-4xl font-bold text-[#C29A5C]  eb-garamond-google">
+                        Custom Suits PAK
+                      </h2>
                       <p className="text-lg text-gray-600 leading-relaxed">
-                        Our master tailors bring decades of experience crafting the finest custom suits in New York
-                        City. Each piece is meticulously handcrafted to your exact measurements and specifications,
-                        ensuring a perfect fit that reflects your personal style and sophistication.
+                        Premium handcrafted custom suits in Lahore—crafted to
+                        perfection, delivered at unmatched value. Every tailored
+                        suit is constructed with full-canvas precision, offering
+                        superior comfort, structure, and lasting shape. At{" "}
+                        <span className="eb-garamond-google font-semibold text-gray-900">
+                        Sew Divine
+                        </span>
+                        , your satisfaction is our guarantee. If the fit isn’t
+                        flawless, we will either re-cut your suit or offer a
+                        full refund—no compromises. With thousands of luxurious
+                        fabrics sourced from world-renowned mills, we ensure
+                        each garment reflects your personal style and our
+                        dedication to excellence.
                       </p>
                       <p className="text-lg text-gray-600 leading-relaxed">
-                        From the initial consultation to the final fitting, we guide you through every step of creating
-                        your bespoke garment. Our attention to detail and commitment to excellence has made us the
-                        preferred choice for discerning gentlemen throughout Manhattan.
+                        Investing in our bespoke suits opens the door to endless
+                        personalization and design freedom. From fabric to fit,
+                        every detail is an opportunity to showcase your
+                        individuality—something no ready-made garment can
+                        replicate. We are proud to consistently deliver some of
+                        the finest handcrafted custom suits in Lahore. Our
+                        commitment to precision tailoring, timeless elegance,
+                        and premium fabrics has made us the preferred choice for
+                        those who seek sartorial distinction across Pakistan.
                       </p>
                     </div>
                   </div>
@@ -193,11 +223,14 @@ function App() {
                 {/* NYC Custom Suit Section */}
                 <section className="py-20 bg-white">
                   <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light text-gray-800 mb-8">A New York Custom Suit Tailored in NYC</h2>
+                    <h2 className="text-4xl font-light text-gray-800 mb-8">
+                      A New York Custom Suit Tailored in NYC
+                    </h2>
                     <p className="text-lg text-gray-600 leading-relaxed mb-12">
-                      Experience the pinnacle of sartorial excellence with our handcrafted custom suits. Every stitch
-                      tells a story of tradition, craftsmanship, and uncompromising quality that has defined New York's
-                      finest tailoring for generations.
+                      Experience the pinnacle of sartorial excellence with our
+                      handcrafted custom suits. Every stitch tells a story of
+                      tradition, craftsmanship, and uncompromising quality that
+                      has defined New York's finest tailoring for generations.
                     </p>
                     <div className="grid md:grid-cols-3 gap-8">
                       <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -209,8 +242,12 @@ function App() {
                               className="w-full h-auto hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h3 className="text-xl font-medium text-gray-800 mb-2">Premium Fabrics</h3>
-                          <p className="text-gray-600">Sourced from the world's finest mills</p>
+                          <h3 className="text-xl font-medium text-gray-800 mb-2">
+                            Premium Fabrics
+                          </h3>
+                          <p className="text-gray-600">
+                            Sourced from the world's finest mills
+                          </p>
                         </CardContent>
                       </Card>
                       <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -222,8 +259,12 @@ function App() {
                               className="w-full h-auto hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h3 className="text-xl font-medium text-gray-800 mb-2">Expert Craftsmanship</h3>
-                          <p className="text-gray-600">Hand-tailored by master artisans</p>
+                          <h3 className="text-xl font-medium text-gray-800 mb-2">
+                            Expert Craftsmanship
+                          </h3>
+                          <p className="text-gray-600">
+                            Hand-tailored by master artisans
+                          </p>
                         </CardContent>
                       </Card>
                       <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -235,8 +276,12 @@ function App() {
                               className="w-full h-auto hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h3 className="text-xl font-medium text-gray-800 mb-2">Perfect Fit</h3>
-                          <p className="text-gray-600">Tailored to your exact measurements</p>
+                          <h3 className="text-xl font-medium text-gray-800 mb-2">
+                            Perfect Fit
+                          </h3>
+                          <p className="text-gray-600">
+                            Tailored to your exact measurements
+                          </p>
                         </CardContent>
                       </Card>
                     </div>
@@ -246,14 +291,19 @@ function App() {
                 {/* Handcrafted Custom Suits Section */}
                 <section className="py-20 bg-stone-50">
                   <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light text-gray-800 mb-12">Handcrafted Custom Suits in NYC</h2>
+                    <h2 className="text-4xl font-light text-gray-800 mb-12">
+                      Handcrafted Custom Suits in NYC
+                    </h2>
                     <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
                       <div className="text-left">
-                        <h3 className="text-2xl font-light text-gray-800 mb-4">The Art of Bespoke Tailoring</h3>
+                        <h3 className="text-2xl font-light text-gray-800 mb-4">
+                          The Art of Bespoke Tailoring
+                        </h3>
                         <p className="text-gray-600 leading-relaxed mb-6">
-                          Our bespoke process begins with understanding your lifestyle, preferences, and vision. We
-                          create a pattern unique to your body, ensuring every suit is a perfect reflection of your
-                          personal style.
+                          Our bespoke process begins with understanding your
+                          lifestyle, preferences, and vision. We create a
+                          pattern unique to your body, ensuring every suit is a
+                          perfect reflection of your personal style.
                         </p>
                         <Button
                           className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 hover:scale-105 transition-transform duration-200"
@@ -276,14 +326,19 @@ function App() {
                 {/* Process Gallery */}
                 <section className="py-20 bg-white">
                   <div className="max-w-6xl mx-auto px-4">
-                    <ImageGallery images={processImages} title="Our Tailoring Process" />
+                    <ImageGallery
+                      images={processImages}
+                      title="Our Tailoring Process"
+                    />
                   </div>
                 </section>
 
                 {/* Custom Tailoring Process */}
                 <section className="py-20 bg-stone-50">
                   <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light text-gray-800 mb-12">Custom Tailoring Process</h2>
+                    <h2 className="text-4xl font-light text-gray-800 mb-12">
+                      Custom Tailoring Process
+                    </h2>
                     <div className="space-y-8">
                       {processSteps.map((step, index) => (
                         <ProcessStep
@@ -301,7 +356,9 @@ function App() {
                 {/* What Clients Say */}
                 <section className="py-20 bg-gray-800 text-white">
                   <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light mb-12">What Clients Say</h2>
+                    <h2 className="text-4xl font-light mb-12">
+                      What Clients Say
+                    </h2>
                     <div className="grid md:grid-cols-3 gap-8">
                       {testimonials.map((testimonial, index) => (
                         <TestimonialCard
@@ -318,7 +375,9 @@ function App() {
                 {/* Our Location */}
                 <section className="py-20 bg-white">
                   <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-light text-gray-800 text-center mb-12">Our Location</h2>
+                    <h2 className="text-4xl font-light text-gray-800 text-center mb-12">
+                      Our Location
+                    </h2>
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                       <div>
                         <div className="grid grid-cols-2 gap-4">
@@ -328,7 +387,10 @@ function App() {
                             "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=200&h=200&fit=crop",
                             "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
                           ].map((src, index) => (
-                            <div key={index} className="overflow-hidden rounded-lg">
+                            <div
+                              key={index}
+                              className="overflow-hidden rounded-lg"
+                            >
                               <img
                                 src={src || "/placeholder.svg"}
                                 alt={`Location image ${index + 1}`}
@@ -339,23 +401,33 @@ function App() {
                         </div>
                       </div>
                       <div className="space-y-6">
-                        <h3 className="text-2xl font-light text-gray-800">Visit Our Manhattan Showroom</h3>
+                        <h3 className="text-2xl font-light text-gray-800">
+                          Visit Our Manhattan Showroom
+                        </h3>
                         <div className="space-y-4">
                           <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
                             <MapPin className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">123 Madison Avenue, New York, NY 10016</span>
+                            <span className="text-gray-600">
+                              123 Madison Avenue, New York, NY 10016
+                            </span>
                           </div>
                           <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
                             <Phone className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">(212) 555-0123</span>
+                            <span className="text-gray-600">
+                              (212) 555-0123
+                            </span>
                           </div>
                           <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
                             <Mail className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">info@nycfinestuits.com</span>
+                            <span className="text-gray-600">
+                              info@nycfinestuits.com
+                            </span>
                           </div>
                           <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
                             <Clock className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">Mon-Sat: 9AM-7PM, Sun: 11AM-5PM</span>
+                            <span className="text-gray-600">
+                              Mon-Sat: 9AM-7PM, Sun: 11AM-5PM
+                            </span>
                           </div>
                         </div>
                         <Button
@@ -372,7 +444,9 @@ function App() {
                 {/* Special Offers */}
                 <section className="py-20 bg-stone-50">
                   <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light text-gray-800 mb-12">Special Offers and Consultations</h2>
+                    <h2 className="text-4xl font-light text-gray-800 mb-12">
+                      Special Offers and Consultations
+                    </h2>
                     <div className="grid md:grid-cols-3 gap-8 mb-12">
                       {[
                         {
@@ -396,7 +470,9 @@ function App() {
                               className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
-                          <h3 className="text-xl font-medium text-gray-800">{item.title}</h3>
+                          <h3 className="text-xl font-medium text-gray-800">
+                            {item.title}
+                          </h3>
                         </div>
                       ))}
                     </div>
@@ -414,8 +490,12 @@ function App() {
                   <div className="max-w-6xl mx-auto px-4">
                     <div className="grid md:grid-cols-4 gap-8">
                       <div>
-                        <h3 className="text-xl font-medium mb-4">NYC Finest Suits</h3>
-                        <p className="text-gray-400">Crafting excellence since 1985</p>
+                        <h3 className="text-xl font-medium mb-4">
+                          NYC Finest Suits
+                        </h3>
+                        <p className="text-gray-400">
+                          Crafting excellence since 1985
+                        </p>
                       </div>
                       <div>
                         <h4 className="font-medium mb-4">Services</h4>
@@ -472,7 +552,7 @@ function App() {
         </Routes>
       </div>
     </ThemeProvider>
-  )
+  );
 }
 
-export default App
+export default App;
