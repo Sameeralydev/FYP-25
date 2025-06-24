@@ -105,7 +105,7 @@ function App() {
               <div className="min-h-screen bg-white">
                 {/* Hero Section */}
                 <section
-                  className="relative h-[90vh] min-h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
+                  className="relative top-[14vh] h-[90vh] min-h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
                   style={{
                     backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${banner})`,
                     transform: `translateY(${scrollY * 0.1}px)`,
@@ -114,7 +114,7 @@ function App() {
                   {/* Overlay content */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white animate-fade-in px-2">
-                      <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl drop-shadow-4xl font-extrabold eb-garamond-google mb-4 -tracking-normal leading-tight">
+                      <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl drop-shadow-4xl font-extrabold eb-garamond-google mb-4 -tracking-normal leading-tight">
                         Finest Custom
                         <br />
                         Suits in PAK
@@ -125,19 +125,23 @@ function App() {
                   {/* Info Card */}
                   <div
                     className="
+                      w-full
+                      p-4
                       absolute
-                      left-1/2
-                      top-[77vh]
-                      transform -translate-x-1/2
-                      w-[95%] max-w-5xl
+                      top-[75vh] left-0
+                      md:absolute
+                      md:left-1/2
+                      md:top-[75vh]
+                      md:transform md:-translate-x-1/2
+                      md:w-[95%] md:max-w-5xl
                       bg-white
                       rounded-lg
                       shadow-xl
                       flex flex-col md:flex-row
                       items-center
                       justify-between
-                      p-4 md:p-8
                       gap-4 md:gap-0
+                      z-10
                     "
                   >
                     {/* QR Code */}
@@ -167,61 +171,61 @@ function App() {
                       </p>
                     </div>
                     {/* Button */}
-                    <div className="mt-4 md:mt-0 flex-shrink-0">
+                    <div className="mt-4 md:mt-0 flex-shrink-0 w-full md:w-auto flex justify-center md:justify-end">
                       <button
-                        className="btn-primary w-32 sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
+                        className="btn-primary w-full sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
                         hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded"
                       >
                         Contact Us
                       </button>
                     </div>
-                  </div>
-                </section>
-                <section className="mt-32 py-20 bg-stone-50">
-                  <div className="mt-5 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                    <div className="overflow-hidden rounded-lg">
-                      <img
-                        src={bespoke}
-                        alt="Man in custom suit"
-                        className="w-full h-[70vh] hover:scale-105 transition-transform duration-500"
-                      />
                     </div>
-                    <div className="space-y-6">
-                      <h2 className="text-4xl font-bold text-[#C29A5C]  eb-garamond-google">
-                        Custom Suits PAK
-                      </h2>
-                      <p className="text-lg text-gray-600 leading-relaxed">
-                        Premium handcrafted custom suits in Lahore—crafted to
-                        perfection, delivered at unmatched value. Every tailored
-                        suit is constructed with full-canvas precision, offering
-                        superior comfort, structure, and lasting shape. At{" "}
-                        <span className="eb-garamond-google font-semibold text-gray-900">
-                        Sew Divine
-                        </span>
-                        , your satisfaction is our guarantee. If the fit isn’t
-                        flawless, we will either re-cut your suit or offer a
-                        full refund—no compromises. With thousands of luxurious
-                        fabrics sourced from world-renowned mills, we ensure
-                        each garment reflects your personal style and our
-                        dedication to excellence.
-                      </p>
-                      <p className="text-lg text-gray-600 leading-relaxed">
-                        Investing in our bespoke suits opens the door to endless
-                        personalization and design freedom. From fabric to fit,
-                        every detail is an opportunity to showcase your
-                        individuality—something no ready-made garment can
-                        replicate. We are proud to consistently deliver some of
-                        the finest handcrafted custom suits in Lahore. Our
-                        commitment to precision tailoring, timeless elegance,
-                        and premium fabrics has made us the preferred choice for
-                        those who seek sartorial distinction across Pakistan.
-                      </p>
-                    </div>
-                  </div>
-                </section>
+                    </section>
+                    <section className="relative top-[47vh] mt-16 sm:mt-24 py-10 sm:py-16 md:py-20 bg-stone-50 lg:relative lg:top-20">
+                      <div className="mt-5 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center px-4 sm:px-8">
+                        <div className="overflow-hidden rounded-lg mb-6 md:mb-0">
+                          <img
+                            src={bespoke}
+                            alt="Man in custom suit"
+                            className="w-full h-[40vh] sm:h-[50vh] md:h-[70vh] object-cover hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="space-y-4 sm:space-y-6">
+                          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#C29A5C] eb-garamond-google">
+                            Custom Suits PAK
+                          </h2>
+                          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                            Premium handcrafted custom suits in Lahore—crafted to
+                            perfection, delivered at unmatched value. Every tailored
+                            suit is constructed with full-canvas precision, offering
+                            superior comfort, structure, and lasting shape. At{" "}
+                            <span className="eb-garamond-google font-semibold text-gray-900">
+                              Sew Divine
+                            </span>
+                            , your satisfaction is our guarantee. If the fit isn’t
+                            flawless, we will either re-cut your suit or offer a
+                            full refund—no compromises. With thousands of luxurious
+                            fabrics sourced from world-renowned mills, we ensure
+                            each garment reflects your personal style and our
+                            dedication to excellence.
+                          </p>
+                          <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+                            Investing in our bespoke suits opens the door to endless
+                            personalization and design freedom. From fabric to fit,
+                            every detail is an opportunity to showcase your
+                            individuality—something no ready-made garment can
+                            replicate. We are proud to consistently deliver some of
+                            the finest handcrafted custom suits in Lahore. Our
+                            commitment to precision tailoring, timeless elegance,
+                            and premium fabrics has made us the preferred choice for
+                            those who seek sartorial distinction across Pakistan.
+                          </p>
+                        </div>
+                      </div>
+                    </section>
 
-                {/* NYC Custom Suit Section */}
-                <section className="py-20 bg-white">
+                    {/* NYC Custom Suit Section */}
+                <section className="py-28 bg-white">
                   <div className="max-w-4xl mx-auto px-4 text-center">
                     <h2 className="text-4xl font-light text-gray-800 mb-8">
                       A New York Custom Suit Tailored in NYC

@@ -1,19 +1,24 @@
-
-import { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
-import { useTheme } from "../context/ThemeContext"
-import logo from '../assets/logo.png'
-import '../App.css'
-import '../index.css'
-
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
+import logo from "../assets/logo.png";
+import "../App.css";
+import "../index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faInstagram,
+  faXTwitter,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = () => {
-  const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { isDark, toggleTheme } = useTheme()
-  const location = useLocation()
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
+  const location = useLocation();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -22,34 +27,50 @@ const Navbar = () => {
     { name: "Gallery", path: "/gallery" },
     { name: "Process", path: "/process" },
     { name: "Contact", path: "/contact" },
-  ]
+  ];
 
   const socialLinks = [
-    { name: "Facebook", icon: "📘", url: "https://facebook.com" },
-    { name: "Instagram", icon: "📷", url: "https://instagram.com" },
-    { name: "Twitter", icon: "🐦", url: "https://twitter.com" },
-    { name: "LinkedIn", icon: "💼", url: "https://linkedin.com" },
-  ]
+    {
+      name: "Facebook",
+      icon: <FontAwesomeIcon icon={faFacebookF} />,
+      url: "https://facebook.com",
+    },
+    {
+      name: "Instagram",
+      icon: <FontAwesomeIcon icon={faInstagram} />,
+      url: "https://instagram.com",
+    },
+    {
+      name: "Twitter",
+      icon: <FontAwesomeIcon icon={faXTwitter} />,
+      url: "https://twitter.com",
+    },
+    {
+      name: "LinkedIn",
+      icon: <FontAwesomeIcon icon={faLinkedinIn} />,
+      url: "https://linkedin.com",
+    },
+  ];
 
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== "undefined") {
         if (window.scrollY > lastScrollY && window.scrollY > 100) {
-          setIsVisible(false)
+          setIsVisible(false);
         } else {
-          setIsVisible(true)
+          setIsVisible(true);
         }
-        setLastScrollY(window.scrollY)
+        setLastScrollY(window.scrollY);
       }
-    }
+    };
 
     if (typeof window !== "undefined") {
-      window.addEventListener("scroll", controlNavbar)
+      window.addEventListener("scroll", controlNavbar);
       return () => {
-        window.removeEventListener("scroll", controlNavbar)
-      }
+        window.removeEventListener("scroll", controlNavbar);
+      };
     }
-  }, [lastScrollY])
+  }, [lastScrollY]);
 
   return (
     <AnimatePresence>
@@ -58,15 +79,18 @@ const Navbar = () => {
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           exit={{ y: -100 }}
-          transition={{ duration: 0.3 }}
-          className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+          transition={{ duration: 0.1 }}
+          className="fixed top-0 left-0 right-0 z-50 bg-gray-100 dark:bg-gray-900  transition-transform duration-300"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-            <div className="flex justify-between items-center h-[15vh]  ">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b-2 border-gray-300 dark:border-gray-700">
+            <div className="flex justify-between items-center h-[15vh] bg-transparent dark:bg-gray-900  transition-transform duration-300 ">
               {/* Logo */}
               <Link to="/" className="flex items-center space-x-2">
-                <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold text-gray-800 dark:text-white">
-                  <img src={logo} alt="NYC Suit" className="h-24" />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="text-2xl font-bold text-gray-800 dark:text-white"
+                >
+                  <img src={logo} alt="NYC Suit" className="md:h-24 h-14 " />
                 </motion.div>
               </Link>
 
@@ -103,7 +127,7 @@ const Navbar = () => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="text-lg hover:opacity-70 transition-opacity duration-200"
+                    className="text-xl text-gray-900 dark:text-white hover:opacity-70 transition-opacity duration-200"
                     title={social.name}
                   >
                     {social.icon}
@@ -114,7 +138,7 @@ const Navbar = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={toggleTheme}
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-200"
+                  className="p-2 rounded-lg bg-transparent text-gray-800 dark:text-white transition-colors duration-200"
                   title="Toggle theme"
                 >
                   {isDark ? "☀️" : "🌙"}
@@ -138,13 +162,23 @@ const Navbar = () => {
                 >
                   <div className="w-6 h-6 flex flex-col justify-center items-center">
                     <span
-                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"}`}
+                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+                        isMobileMenuOpen
+                          ? "rotate-45 translate-y-1"
+                          : "-translate-y-0.5"
+                      }`}
                     ></span>
                     <span
-                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"}`}
+                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
+                        isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                      }`}
                     ></span>
                     <span
-                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"}`}
+                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
+                        isMobileMenuOpen
+                          ? "-rotate-45 -translate-y-1"
+                          : "translate-y-0.5"
+                      }`}
                     ></span>
                   </div>
                 </button>
@@ -201,7 +235,7 @@ const Navbar = () => {
         </motion.nav>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
