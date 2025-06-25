@@ -1,51 +1,6 @@
 import { motion } from "framer-motion"
 
 const Process = () => {
-  const steps = [
-    {
-      number: 1,
-      title: "Initial Consultation",
-      description:
-        "We begin with a detailed consultation to understand your style preferences, lifestyle needs, and specific requirements. This is where we discuss fabric options, design details, and create your unique vision.",
-      duration: "60-90 minutes",
-    },
-    {
-      number: 2,
-      title: "Fabric Selection",
-      description:
-        "Choose from our extensive collection of premium fabrics sourced from the world's finest mills including Loro Piana, Ermenegildo Zegna, and Holland & Sherry.",
-      duration: "30-45 minutes",
-    },
-    {
-      number: 3,
-      title: "Measurements & Pattern Creation",
-      description:
-        "Our master tailors take over 40 precise measurements to create a unique pattern specifically for your body. This ensures a perfect fit that flatters your physique.",
-      duration: "45-60 minutes",
-    },
-    {
-      number: 4,
-      title: "First Fitting",
-      description:
-        "The basted suit is tried on for the first time. We make any necessary adjustments to ensure the perfect fit and silhouette.",
-      duration: "30-45 minutes",
-    },
-    {
-      number: 5,
-      title: "Handcrafting",
-      description:
-        "Our skilled artisans hand-stitch your suit using traditional techniques. Every detail is carefully crafted, from the buttonholes to the lining.",
-      duration: "4-6 weeks",
-    },
-    {
-      number: 6,
-      title: "Final Fitting & Delivery",
-      description:
-        "The completed suit is fitted one final time for any minor adjustments. Your bespoke suit is then ready for delivery.",
-      duration: "30 minutes",
-    },
-  ]
-
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 pt-20">
       <div className="max-w-4xl mx-auto px-4 py-16">
