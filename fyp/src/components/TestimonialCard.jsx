@@ -3,7 +3,7 @@ import { Star } from "lucide-react"
 
 const TestimonialCard = ({ rating = 5, testimonial, author }) => {
   return (
-    <Card className="bg-gray-700 border-0 text-white hover:bg-gray-600 transition-colors duration-300">
+    <Card className="bg- border-0 text-white hover:bg-gray-900 transition-colors duration-300">
       <CardContent className="p-6">
         <div className="flex mb-4">
           {Array.from({ length: rating }, (_, i) => (

@@ -28,7 +28,19 @@ import customTailor6 from "./assets/customTailored-6.webp"
 import customTailor7 from "./assets/customTailored-7.webp"
 import customTailor8 from "./assets/customTailored-8.webp"
 import customTailor9 from "./assets/customTailored-9.webp"
+import tailored4 from "./assets/Tailored-3.webp";
+import tailored5 from "./assets/tailored5.webp";
+import qrcodeImage from "./assets/QR.png"
+import logo from "./assets/logo.png";
+import testimonialBackground from "./assets/testimonial_background.webp";
 import "./App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faInstagram,
+  faXTwitter,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
 
 function App() {
   const [activeStep, setActiveStep] = useState(0);
@@ -82,19 +94,19 @@ function App() {
       rating: 5,
       testimonial:
         "Exceptional craftsmanship and attention to detail. My suit fits perfectly and looks incredible.",
-      author: "Michael R.",
+      author: "Zahid White.",
     },
     {
       rating: 5,
       testimonial:
         "The best investment I've made in my wardrobe. Truly bespoke quality.",
-      author: "David L.",
+      author: "Saim Kuku.",
     },
     {
       rating: 5,
       testimonial:
         "Outstanding service from consultation to final fitting. Highly recommended.",
-      author: "James K.",
+      author: "Usama Bossard.",
     },
   ];
 
@@ -159,7 +171,7 @@ function App() {
                   {/* Overlay content */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white animate-fade-in px-2">
-                      <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl drop-shadow-4xl font-extrabold eb-garamond-google mb-4 -tracking-normal leading-tight">
+                      <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl md:drop-shadow-4xl drop-shadow-4xl font-extrabold eb-garamond-google mb-4 -tracking-normal sm:leading-tight">
                         Finest Custom
                         <br />
                         Suits in PAK
@@ -192,9 +204,7 @@ function App() {
                     {/* QR Code - hidden on mobile */}
                     <div className="mb-4 md:mb-0 md:mr-8 flex-shrink-0 justify-center w-full md:w-auto hidden md:flex">
                       <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 bg-white p-2 rounded hover:shadow-lg transition-shadow duration-300 flex items-center justify-center">
-                        <div className="w-full h-full bg-black flex items-center justify-center text-white text-xs cursor-pointer">
-                          QR CODE
-                        </div>
+                        <img src={qrcodeImage} alt="QR Code" />
                       </div>
                     </div>
                     {/* Text */}
@@ -397,7 +407,7 @@ function App() {
                 </section>
                 <section className="py-20 bg-stone-50">
                   <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light text-gray-800 mb-12">
+                    <h2 className="md:text-5xl text-4xl font-bold eb-garamond-google text-[#C29A5C] mb-12">
                       Custom Tailoring Process
                     </h2>
                     <div className="space-y-8">
@@ -405,7 +415,9 @@ function App() {
                         <ProcessStep
                           key={index}
                           number={index + 1}
-                          title={step.title}
+                          title={
+                            <span className="eb-garamond-google font-bold">{step.title}</span>
+                          }
                           description={step.description}
                           isActive={activeStep === index}
                         />
@@ -415,190 +427,148 @@ function App() {
                 </section>
 
                 {/* What Clients Say */}
-                <section className="py-20 bg-gray-800 text-white">
-                  <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light mb-12">
-                      What Clients Say
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                      {testimonials.map((testimonial, index) => (
-                        <TestimonialCard
-                          key={index}
-                          rating={testimonial.rating}
-                          testimonial={testimonial.testimonial}
-                          author={testimonial.author}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </section>
-
-                {/* Our Location */}
-                <section className="py-20 bg-white">
-                  <div className="max-w-6xl mx-auto px-4">
-                    <h2 className="text-4xl font-light text-gray-800 text-center mb-12">
-                      Our Location
-                    </h2>
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                      <div>
-                        <div className="grid grid-cols-2 gap-4">
-                          {[
-                            "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=200&h=200&fit=crop",
-                            "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=200&h=200&fit=crop",
-                            "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=200&h=200&fit=crop",
-                            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
-                          ].map((src, index) => (
-                            <div
+                        <section
+                          className="py-20 text-white bg-cover bg-center bg-no-repeat"
+                          style={{
+                          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${testimonialBackground})`,
+                          }}
+                        >
+                          <div className="max-w-4xl mx-auto px-4 text-center rounded-lg py-8">
+                          <h2 className="text-4xl font-semibold eb-garamond-google mb-12">
+                            What Clients Say
+                          </h2>
+                          <div className="grid md:grid-cols-3 gap-8">
+                            {testimonials.map((testimonial, index) => (
+                            <TestimonialCard
                               key={index}
-                              className="overflow-hidden rounded-lg"
-                            >
-                              <img
+                              rating={testimonial.rating}
+                              testimonial={testimonial.testimonial}
+                              author={testimonial.author}
+                            />
+                            ))}
+                          </div>
+                          </div>
+                        </section>
+                        <section className="py-20 bg-white">
+                          <div className="max-w-6xl mx-auto px-4">
+                          <h2 className="md:text-5xl text-4xl font-bold eb-garamond-google text-[#C29A5C] text-center mb-12">
+                            Our Location
+                          </h2>
+                          <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                            <div className="grid md:h-[49vh] h-[35vh] grid-cols-2 gap-4">
+                              {[
+                              tailored, tailored4,
+                              tailored5, tailored2,
+                              ].map((src, index) => (
+                              <div
+                                key={index}
+                                className="overflow-hidden rounded-lg"
+                              >
+                                <img
                                 src={src || "/placeholder.svg"}
                                 alt={`Location image ${index + 1}`}
                                 className="w-full h-auto hover:scale-110 transition-transform duration-300"
-                              />
+                                />
+                              </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="space-y-6">
-                        <h3 className="text-2xl font-light text-gray-800">
-                          Visit Our Manhattan Showroom
-                        </h3>
-                        <div className="space-y-4">
-                          <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
-                            <MapPin className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">
-                              123 Madison Avenue, New York, NY 10016
-                            </span>
+                            </div>
+                            <div className="space-y-6">
+                            <h3 className="text-2xl font-semibold eb-garamond-google text-black">
+                              Visit Our Lahore Outlet
+                            </h3>
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
+                              <MapPin className="w-5 h-5 text-gray-600" />
+                              <span className="text-gray-600">
+                                132 GT. Road Lahore, PAK
+                              </span>
+                              </div>
+                              <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
+                              <Phone className="w-5 h-5 text-gray-600" />
+                              <span className="text-gray-600">
+                                (042) 123-4567
+                              </span>
+                              </div>
+                              <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
+                              <Mail className="w-5 h-5 text-gray-600" />
+                              <span className="text-gray-600">
+                                info@sewdivine.com
+                              </span>
+                              </div>
+                              <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
+                              <Clock className="w-5 h-5 text-gray-600" />
+                              <span className="text-gray-600">
+                                Mon-Sat: 9AM-7PM, Sun: 11AM-5PM
+                              </span>
+                              </div>
+                            </div>
+                            <div className="flex justify-center md:justify-start">
+                              <Button
+                              className="bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
+                              hover:bg-[#C29A5C] hover:text-white px-8 py-3 hover:scale-105 transition-transform duration-200"
+                              onClick={handleAppointmentClick}
+                              >
+                              Book Appointment
+                              </Button>
+                            </div>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
-                            <Phone className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">
-                              (212) 555-0123
-                            </span>
                           </div>
-                          <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
-                            <Mail className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">
-                              info@nycfinestuits.com
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-3 hover:text-gray-800 transition-colors duration-200">
-                            <Clock className="w-5 h-5 text-gray-600" />
-                            <span className="text-gray-600">
-                              Mon-Sat: 9AM-7PM, Sun: 11AM-5PM
-                            </span>
-                          </div>
-                        </div>
-                        <Button
-                          className="bg-gray-800 hover:bg-gray-700 text-white px-8 py-3 hover:scale-105 transition-transform duration-200"
-                          onClick={handleAppointmentClick}
-                        >
-                          Book Appointment
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* Special Offers */}
-                <section className="py-20 bg-stone-50">
-                  <div className="max-w-4xl mx-auto px-4 text-center">
-                    <h2 className="text-4xl font-light text-gray-800 mb-12">
-                      Special Offers and Consultations
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-8 mb-12">
-                      {[
-                        {
-                          src: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&h=400&fit=crop",
-                          title: "Classic Collection",
-                        },
-                        {
-                          src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop",
-                          title: "Business Formal",
-                        },
-                        {
-                          src: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=300&h=400&fit=crop",
-                          title: "Summer Collection",
-                        },
-                      ].map((item, index) => (
-                        <div key={index} className="group">
-                          <div className="overflow-hidden rounded-lg mb-4">
-                            <img
-                              src={item.src || "/placeholder.svg"}
-                              alt={item.title}
-                              className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                          <h3 className="text-xl font-medium text-gray-800">
-                            {item.title}
-                          </h3>
-                        </div>
-                      ))}
-                    </div>
-                    <Button
-                      className="bg-gray-800 hover:bg-gray-700 text-white px-12 py-4 text-lg hover:scale-105 transition-transform duration-200"
-                      onClick={handleConsultationClick}
-                    >
-                      Schedule Your Consultation
-                    </Button>
-                  </div>
-                </section>
-
-                {/* Footer */}
-                <footer className="bg-gray-900 text-white py-12">
+                        </section>
+                        {/* Footer */}
+                <footer className="bg-[#1A1A1A] text-white py-12">
                   <div className="max-w-6xl mx-auto px-4">
                     <div className="grid md:grid-cols-4 gap-8">
                       <div>
-                        <h3 className="text-xl font-medium mb-4">
-                          NYC Finest Suits
+                        <img src={logo} alt="NYC Suit" className="md:h-28 h-16 " />
+                        <h3 className="text-4xl eb-garamond-google font-semibold mb-4">
+                          Sew Divine Finest Suits
                         </h3>
-                        <p className="text-gray-400">
-                          Crafting excellence since 1985
-                        </p>
                       </div>
                       <div>
-                        <h4 className="font-medium mb-4">Services</h4>
+                        <h4 className="text-2xl eb-garamond-google text-[#C29A5C] font-semibold mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-gray-400">
-                          <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                            Custom Suits
+                          <li className="hover:text-[#C29A5C] text-white transition-colors duration-200 cursor-pointer">
+                            About
                           </li>
-                          <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                            Alterations
+                          <li className="hover:text-[#C29A5C] text-white transition-colors duration-200 cursor-pointer">
+                            Services
                           </li>
-                          <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                            Formal Wear
+                          <li className="hover:text-[#C29A5C] text-white transition-colors duration-200 cursor-pointer">
+                            Gallery
                           </li>
-                          <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                            Accessories
+                          <li className="hover:text-[#C29A5C] text-white transition-colors duration-200 cursor-pointer">
+                            Process
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-medium mb-4">Contact</h4>
+                        <h4 className="text-2xl eb-garamond-google text-[#C29A5C] font-semibold mb-4">Contact</h4>
                         <ul className="space-y-2 text-gray-400">
-                          <li>123 Madison Avenue</li>
-                          <li>New York, NY 10016</li>
-                          <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                            (212) 555-0123
+                          <li className="hover:text-[#C29A5C] text-white cursor-pointer">132 GT. Road Lahore, PAK</li>
+                          <li className="hover:text-[#C29A5C] text-white cursor-pointer">Lahore, LHE 54000</li>
+                          <li className="hover:text-[#C29A5C] text-white transition-colors duration-200 cursor-pointer">
+                            (042) 123-4567
                           </li>
-                          <li className="hover:text-white transition-colors duration-200 cursor-pointer">
-                            info@nycfinestuits.com
+                          <li className="hover:text-[#C29A5C] text-white transition-colors duration-200 cursor-pointer">
+                            info@sewdivine.com
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-medium mb-4">Follow Us</h4>
+                        <h4 className="text-2xl eb-garamond-google text-[#C29A5C] font-semibold mb-4">Follow Us</h4>
                         <div className="flex space-x-4">
-                          <div className="w-8 h-8 bg-gray-700 rounded hover:bg-gray-600 transition-colors duration-200 cursor-pointer"></div>
-                          <div className="w-8 h-8 bg-gray-700 rounded hover:bg-gray-600 transition-colors duration-200 cursor-pointer"></div>
-                          <div className="w-8 h-8 bg-gray-700 rounded hover:bg-gray-600 transition-colors duration-200 cursor-pointer"></div>
+                          <div className="w-8 h-8 transition-colors duration-200 cursor-pointer" whileHover={{ scale: 1.1 }}><FontAwesomeIcon icon={faFacebookF} /></div>
+                          <div className="w-8 h-8 transition-colors duration-200 cursor-pointer"><FontAwesomeIcon icon={faInstagram} /></div>
+                          <div className="w-8 h-8 transition-colors duration-200 cursor-pointer"><FontAwesomeIcon icon={faXTwitter} /></div>
+                          <div className="w-8 h-8 transition-colors duration-200 cursor-pointer"><FontAwesomeIcon icon={faLinkedinIn} /></div>
                         </div>
                       </div>
                     </div>
                     <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                      <p>&copy; 2024 NYC Finest Suits. All rights reserved.</p>
+                      <p>&copy; 2024 Sew Divine Suits. All rights reserved.</p>
                     </div>
                   </div>
                 </footer>
