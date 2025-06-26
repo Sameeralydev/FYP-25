@@ -83,7 +83,7 @@ const Navbar = () => {
           transition={{ duration: 0.1 }}
           className="fixed top-0 left-0 right-0 z-50 bg-gray-100 dark:bg-[#1A1A1A]  transition-transform duration-300"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b-2 border-gray-300 dark:border-gray-700">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b-2 border-gray-300 dark:border-[#C29A5C]">
             <div className="flex justify-between items-center h-[6vh] md:h-[10vh] bg-transparent dark:bg-[#1A1A1A] transition-transform duration-300 ">
               {/* Logo */}
               <Link to="/" className="flex items-center space-x-2">
