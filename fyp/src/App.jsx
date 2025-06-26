@@ -28,7 +28,7 @@ import customTailor6 from "./assets/customTailored-6.webp"
 import customTailor7 from "./assets/customTailored-7.webp"
 import customTailor8 from "./assets/customTailored-8.webp"
 import customTailor9 from "./assets/customTailored-9.webp"
-import tailored4 from "./assets/Tailored-3.webp";
+import tailored4 from "./assets/tailored3.webp";
 import tailored5 from "./assets/tailored5.webp";
 import qrcodeImage from "./assets/QR.png"
 import logo from "./assets/logo.png";
