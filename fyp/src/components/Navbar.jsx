@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import logo from "../assets/logo.png";
+import whiteLogo from "../assets/logoW.png";
 import "../App.css";
 import "../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -83,17 +84,20 @@ const Navbar = () => {
           className="fixed top-0 left-0 right-0 z-50 bg-gray-100 dark:bg-[#1A1A1A]  transition-transform duration-300"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b-2 border-gray-300 dark:border-gray-700">
-            <div className="flex justify-between items-center h-[6vh] md:h-[15vh] bg-transparent dark:bg-[#1A1A1A] transition-transform duration-300 ">
+            <div className="flex justify-between items-center h-[6vh] md:h-[10vh] bg-transparent dark:bg-[#1A1A1A] transition-transform duration-300 ">
               {/* Logo */}
               <Link to="/" className="flex items-center space-x-2">
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.25 }}
                   className="text-2xl font-bold text-gray-800 dark:text-white"
                 >
-                  <img src={logo} alt="NYC Suit" className="md:h-24 h-10 " />
+                  <img
+                    src={logo}
+                    alt="NYC Suit"
+                    className="md:h-16 h-12"
+                  />
                 </motion.div>
               </Link>
-
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-8">
                 {navItems.map((item) => (

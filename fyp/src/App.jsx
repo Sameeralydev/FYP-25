@@ -32,6 +32,7 @@ import tailored4 from "./assets/tailored3.webp";
 import tailored5 from "./assets/tailored5.webp";
 import qrcodeImage from "./assets/QR.png"
 import logo from "./assets/logo.png";
+import whiteLogo from "./assets/logoW.png"
 import testimonialBackground from "./assets/testimonial_background.webp";
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -162,7 +163,7 @@ function App() {
               <div className="min-h-screen bg-white">
                 {/* Hero Section */}
                 <section
-                  className="md:relative md:top-[14vh] md:h-[90vh] md:min-h-[500px] relative top-[10vh] h-[90vh] min-h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
+                  className="md:relative md:top-[10vh] md:h-[90vh] md:min-h-[500px] relative top-[6vh] h-[90vh] min-h-[500px] bg-cover bg-center bg-no-repeat flex items-center"
                   style={{
                     backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${banner})`,
                     transform: `translateY(${scrollY * 0.1}px)`,
@@ -520,10 +521,10 @@ function App() {
                         {/* Footer */}
                 <footer className="bg-[#1A1A1A] text-white py-12">
                   <div className="max-w-6xl mx-auto px-4">
-                    <div className="grid md:grid-cols-4 gap-8">
-                      <div>
-                        <img src={logo} alt="NYC Suit" className="md:h-28 h-16 " />
-                        <h3 className="text-4xl eb-garamond-google font-semibold mb-4">
+                    <div className="grid md:grid-cols-4 gap-">
+                      <div className="md:flex md:flex-col md:w-44 md:items-center flex flex-col items-center w-full gap-2 mb-4" >
+                        <img src={whiteLogo} alt="NYC Suit" className="md:h-20 h-16 md:w-20 " />
+                        <h3 className="text-4xl eb-garamond-google text-[#C29A5C] font-semibold mb-4">
                           Sew Divine Finest Suits
                         </h3>
                       </div>
