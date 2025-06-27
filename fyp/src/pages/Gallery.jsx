@@ -1,6 +1,13 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import charcoalblack from "../assets/charcoalBlack.jpg"
+import navysuit from "../assets/navySuit.jpg"
+import kurtagrey from "../assets/kurtaGrey.jpg"
+import shalwarKameez from "../assets/shalwarKameez.jpg"
+import weddingTuxedo from "../assets/weddingTuxedo.jpg"
+import casualBlazer from "../assets/casualBlazer.jpg"
+import divider from "../assets/divider.svg"
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -8,44 +15,44 @@ const Gallery = () => {
   const images = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=500&fit=crop",
+      src: navysuit,
       alt: "Classic Navy Suit",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+      src: charcoalblack,
       alt: "Charcoal Business Suit",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=400&h=500&fit=crop",
-      alt: "Light Gray Summer Suit",
+      src: kurtagrey,
+      alt: "Light Gray Kurta",
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=500&fit=crop",
-      alt: "Tailoring Process",
+      src: shalwarKameez,
+      alt: "Shalwar Kameez",
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=500&fit=crop",
+      src: weddingTuxedo,
       alt: "Wedding Tuxedo",
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+      src: casualBlazer,
       alt: "Casual Blazer",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 pt-20">
+    <div className="min-h-screen bg-white dark:bg-[#1A1A1A] pt-20">
       <div className="max-w-6xl mx-auto px-4 py-16">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-light text-gray-800 dark:text-white mb-16 text-center"
+          className="md:text-6xl text-5xl font-bold eb-garamond-google text-[#C29A5C] dark:text-white mb-16 text-center"
         >
           Our Gallery
         </motion.h1>
@@ -68,7 +75,7 @@ const Gallery = () => {
                 alt={image.alt}
                 className="w-full h-80 object-cover"
               />
-              <div className="p-4 bg-white dark:bg-gray-800">
+              <div className="p-4 bg-white border border-t-0 border-l-0 border-r-0 border-b-[#C29A5C] dark:bg-[#1f1f1f]">
                 <h3 className="text-lg font-medium text-gray-800 dark:text-white">{image.alt}</h3>
               </div>
             </motion.div>
@@ -107,6 +114,7 @@ const Gallery = () => {
             </motion.div>
           )}
         </AnimatePresence>
+        <img src={divider} alt="Divider" className="my-10 w-[40vh] mx-auto" />
       </div>
     </div>
   )
