@@ -1,0 +1,11 @@
+
+.eb-garamond-google{
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  /* font-weight: 900; */
+  font-style: normal;
+}
+::selection {
+  background-color: #C29A5C;
+  color: #000;
+}
