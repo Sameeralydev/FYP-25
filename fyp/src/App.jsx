@@ -31,7 +31,6 @@ import customTailor9 from "./assets/customTailored-9.webp"
 import tailored4 from "./assets/tailored3.webp";
 import tailored5 from "./assets/tailored5.webp";
 import qrcodeImage from "./assets/QR.png"
-import logo from "./assets/logo.png";
 import whiteLogo from "./assets/logoW.png"
 import testimonialBackground from "./assets/testimonial_background.webp";
 import "./App.css";
