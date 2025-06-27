@@ -5,3 +5,7 @@
   /* font-weight: 900; */
   font-style: normal;
 }
+::selection {
+  background-color: #C29A5C;
+  color: #000;
+}

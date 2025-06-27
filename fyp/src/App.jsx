@@ -230,7 +230,8 @@ function App() {
                       <button
                         className="btn-primary w-full sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
                         hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded"
-                      >
+                        onClick={() => window.location.href = "/contact"}
+                       >
                         Contact Us
                       </button>
                     </div>
@@ -369,7 +370,7 @@ function App() {
                           <Button
                             className="bg-transparent text-[#C29A5C] text-lg sm:text-xl border border-[#C29A5C]
                             hover:bg-[#C29A5C] hover:text-white px-8 py-3 eb-garamond-google font-semibold hover:scale-105 transition-transform duration-200"
-                            onClick={handleConsultationClick}
+                            onClick={() => window.location.href = "/contact"}
                           >
                             Schedule Consultation
                           </Button>
@@ -508,7 +509,7 @@ function App() {
                               <Button
                               className="bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
                               hover:bg-[#C29A5C] hover:text-white px-8 py-3 hover:scale-105 transition-transform duration-200"
-                              onClick={handleAppointmentClick}
+                              onClick={() => window.location.href = "/contact"}
                               >
                               Book Appointment
                               </Button>

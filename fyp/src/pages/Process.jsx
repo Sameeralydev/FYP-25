@@ -95,7 +95,7 @@ const Process = () => {
             6-8 weeks from initial consultation to delivery
           </p>
           <button className="md:w-[35%] w-[85%] bg-transparent text-[#C29A5C] text-lg sm:text-xl border border-[#C29A5C]
-             hover:bg-[#C29A5C] hover:text-white px-8 py-3 eb-garamond-google font-semibold hover:scale-105 transition-transform duration-200">Schedule Your Consultation</button>
+             hover:bg-[#C29A5C] hover:text-white px-8 py-3 eb-garamond-google font-semibold hover:scale-105 transition-transform duration-200" onClick={() => window.location.href = "/contact"}>Schedule Your Consultation</button>
         </motion.div>
       </div>
     </div>
