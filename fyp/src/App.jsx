@@ -220,7 +220,7 @@ function App() {
                           Custom Suit tailor in PAK{" "}
                         </span>
                         with more than 45 years of experience. Premium Custom
-                        tailored suits in PAK, LAHORE. Perfect Fit Guarantee on
+                        tailored suits in LHE, PAKISTAN. Perfect Fit Guarantee on
                         custom clothing. Our Lahore City based{" "}
                         <span className="font-bold">bespoke tailors</span>{" "}
                         create full custom suits, nothing is “made-to-measure”.
