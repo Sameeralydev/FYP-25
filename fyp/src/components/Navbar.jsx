@@ -162,7 +162,7 @@ const Navbar = () => {
 
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 rounded-lg text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                  className="p-2 rounded-lg text-gray-800 dark:text-white  transition-colors duration-200"
                 >
                   <div className="w-6 h-6 flex flex-col justify-center items-center">
                     <span
@@ -207,8 +207,8 @@ const Navbar = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                           location.pathname === item.path
-                            ? "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white"
-                            : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white"
+                            ? "bg-[#dddddd] dark:bg-[#2b2b2b] text-gray-800 dark:text-white"
+                            : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#1f1f1f] hover:text-[#1f1f1f] dark:hover:text-white"
                         }`}
                       >
                         {item.name}
