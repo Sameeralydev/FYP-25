@@ -457,7 +457,7 @@ function App() {
                           </h2>
                           <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div>
-                            <div className="grid md:h-[49vh] h-[30vh] grid-cols-2 gap-4">
+                            <div className="grid md:h-[49vh] h-[29vh] grid-cols-2 gap-4">
                               {[
                               tailored, tailored4,
                               tailored5, tailored2,
