@@ -30,7 +30,7 @@ import customTailor8 from "./assets/customTailored-8.webp"
 import customTailor9 from "./assets/customTailored-9.webp"
 import tailored4 from "./assets/tailored3.webp";
 import tailored5 from "./assets/tailored5.webp";
-import qrcodeImage from "./assets/QR.png"
+import whatsappQR from "./assets/whatsappQR.jpeg";
 import whiteLogo from "./assets/logoW.png"
 import testimonialBackground from "./assets/testimonial_background.webp";
 import "./App.css";
@@ -203,8 +203,8 @@ function App() {
                   >
                     {/* QR Code - hidden on mobile */}
                     <div className="mb-4 md:mb-0 md:mr-8 flex-shrink-0 justify-center w-full md:w-auto hidden md:flex">
-                      <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 bg-white p-2 rounded hover:shadow-lg transition-shadow duration-300 flex items-center justify-center">
-                        <img src={qrcodeImage} alt="QR Code" />
+                      <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 bg-white p-2 rounded  flex items-center justify-center">
+                        <img src={whatsappQR} alt="QR Code" />
                       </div>
                     </div>
                     {/* Text */}

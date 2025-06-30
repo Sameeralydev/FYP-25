@@ -46,7 +46,32 @@ const Contact = () => {
               Schedule a Consultation
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                try {
+                  await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                      name: formData.name,
+                      email: formData.email,
+                      phone: formData.phone,
+                      service: formData.service,
+                      message: formData.message,
+                    }),
+                  });
+                  alert("Thank you for your inquiry! We will contact you soon.");
+                  setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+                } catch (error) {
+                  alert("There was an error sending your message. Please try again later.");
+                }
+              }}
+              className="space-y-6"
+            >
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Full Name *
@@ -131,8 +156,6 @@ const Contact = () => {
               </motion.button>
             </form>
           </motion.div>
-
-          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
