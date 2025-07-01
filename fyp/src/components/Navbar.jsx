@@ -103,11 +103,10 @@ const Navbar = () => {
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`relative px-3 py-2 text-lg font-bold transition-colors duration-200 eb-garamond-google ${
-                      location.pathname === item.path
-                        ? "text-gray-800 dark:text-white"
-                        : "text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
-                    }`}
+                    className={`relative px-3 py-2 text-lg font-bold transition-colors duration-200 eb-garamond-google ${location.pathname === item.path
+                      ? "text-gray-800 dark:text-white"
+                      : "text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                      }`}
                   >
                     {item.name}
                     {location.pathname === item.path && (
@@ -161,27 +160,24 @@ const Navbar = () => {
 
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 rounded-lg text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                  className="p-2 rounded-lg text-gray-800 dark:text-white  transition-colors duration-200"
                 >
                   <div className="w-6 h-6 flex flex-col justify-center items-center">
                     <span
-                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-                        isMobileMenuOpen
-                          ? "rotate-45 translate-y-1"
-                          : "-translate-y-0.5"
-                      }`}
+                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen
+                        ? "rotate-45 translate-y-1"
+                        : "-translate-y-0.5"
+                        }`}
                     ></span>
                     <span
-                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${
-                        isMobileMenuOpen ? "opacity-0" : "opacity-100"
-                      }`}
+                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                        }`}
                     ></span>
                     <span
-                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${
-                        isMobileMenuOpen
-                          ? "-rotate-45 -translate-y-1"
-                          : "translate-y-0.5"
-                      }`}
+                      className={`bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen
+                        ? "-rotate-45 -translate-y-1"
+                        : "translate-y-0.5"
+                        }`}
                     ></span>
                   </div>
                 </button>
@@ -204,11 +200,10 @@ const Navbar = () => {
                         key={item.name}
                         to={item.path}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                          location.pathname === item.path
-                            ? "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white"
-                            : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white"
-                        }`}
+                        className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${location.pathname === item.path
+                          ? "bg-[#dddddd] dark:bg-[#2b2b2b] text-gray-800 dark:text-white"
+                          : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-[#1f1f1f] hover:text-[#1f1f1f] dark:hover:text-white"
+                          }`}
                       >
                         {item.name}
                       </Link>

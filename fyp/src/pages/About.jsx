@@ -73,7 +73,7 @@ Would you like me to help draft an introductory paragraph for your website, or p
               <button
                                             className="bg-transparent text-[#C29A5C] font-serif md:text-[16px] sm:text-xl border border-[#C29A5C]
                                             hover:bg-[#C29A5C] hover:text-white px-8 py-3 hover:scale-105 transition-transform duration-200"
-                                            >
+                                            onClick={() => window.location.href = "/contact"}>
                                             BOOK AN APPOINTMENT
                                             </button>
             </div>

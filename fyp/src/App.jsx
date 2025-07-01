@@ -30,8 +30,7 @@ import customTailor8 from "./assets/customTailored-8.webp"
 import customTailor9 from "./assets/customTailored-9.webp"
 import tailored4 from "./assets/tailored3.webp";
 import tailored5 from "./assets/tailored5.webp";
-import qrcodeImage from "./assets/QR.png"
-import logo from "./assets/logo.png";
+import whatsappQR from "./assets/whatsappQR.jpeg";
 import whiteLogo from "./assets/logoW.png"
 import testimonialBackground from "./assets/testimonial_background.webp";
 import "./App.css";
@@ -198,8 +197,8 @@ function App() {
                   >
                     {/* QR Code - hidden on mobile */}
                     <div className="mb-4 md:mb-0 md:mr-8 flex-shrink-0 justify-center w-full md:w-auto hidden md:flex">
-                      <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 bg-white p-2 rounded hover:shadow-lg transition-shadow duration-300 flex items-center justify-center">
-                        <img src={qrcodeImage} alt="QR Code" />
+                      <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 bg-white p-2 rounded  flex items-center justify-center">
+                        <img src={whatsappQR} alt="QR Code" />
                       </div>
                     </div>
                     {/* Text */}
@@ -214,7 +213,7 @@ function App() {
                           Custom Suit tailor in PAK{" "}
                         </span>
                         with more than 45 years of experience. Premium Custom
-                        tailored suits in PAK, LAHORE. Perfect Fit Guarantee on
+                        tailored suits in LHE, PAKISTAN. Perfect Fit Guarantee on
                         custom clothing. Our Lahore City based{" "}
                         <span className="font-bold">bespoke tailors</span>{" "}
                         create full custom suits, nothing is “made-to-measure”.
@@ -225,7 +224,8 @@ function App() {
                       <button
                         className="btn-primary w-full sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
                         hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded"
-                      >
+                        onClick={() => window.location.href = "/contact"}
+                       >
                         Contact Us
                       </button>
                     </div>
@@ -364,7 +364,7 @@ function App() {
                           <Button
                             className="bg-transparent text-[#C29A5C] text-lg sm:text-xl border border-[#C29A5C]
                             hover:bg-[#C29A5C] hover:text-white px-8 py-3 eb-garamond-google font-semibold hover:scale-105 transition-transform duration-200"
-                            onClick={handleConsultationClick}
+                            onClick={() => window.location.href = "/contact"}
                           >
                             Schedule Consultation
                           </Button>
@@ -451,7 +451,7 @@ function App() {
                           </h2>
                           <div className="grid md:grid-cols-2 gap-12 items-center">
                             <div>
-                            <div className="grid md:h-[49vh] h-[35vh] grid-cols-2 gap-4">
+                            <div className="grid md:h-[49vh] h-[29vh] grid-cols-2 gap-4">
                               {[
                               tailored, tailored4,
                               tailored5, tailored2,
@@ -503,7 +503,7 @@ function App() {
                               <Button
                               className="bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
                               hover:bg-[#C29A5C] hover:text-white px-8 py-3 hover:scale-105 transition-transform duration-200"
-                              onClick={handleAppointmentClick}
+                              onClick={() => window.location.href = "/contact"}
                               >
                               Book Appointment
                               </Button>
