@@ -47,7 +47,6 @@ function App() {
   const [activeStep, setActiveStep] = useState(0);
   const { scrollY } = useScrollAnimation();
 
-  // Auto-advance process steps
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % 5);
@@ -55,17 +54,14 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Handle consultation booking
   const handleConsultationClick = () => {
     alert("Consultation booking functionality would be implemented here!");
   };
 
-  // Handle appointment booking
   const handleAppointmentClick = () => {
     alert("Appointment booking functionality would be implemented here!");
   };
 
-  // Process steps data
   const processSteps = [
     {
       title: "Initial Consultation",
@@ -89,7 +85,6 @@ function App() {
     },
   ];
 
-  // Testimonials data
   const testimonials = [
     {
       rating: 5,
@@ -111,7 +106,6 @@ function App() {
     },
   ];
 
-  // Process gallery images
   // Custom images for process gallery
   const processImages = [
     {
