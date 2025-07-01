@@ -6,6 +6,7 @@ const ProcessStep = ({ number, title, description, isActive = false }) => {
           isActive ? "bg-yellow-600 text-white shadow-lg" : "bg-gray-800 text-white"
         }`}
       >
+        {/* randering the number here */}
         {number}
       </div>
       <div className="text-left">
