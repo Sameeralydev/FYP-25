@@ -171,7 +171,8 @@ function App() {
                   {/* Overlay content */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white animate-fade-in px-2">
-                      <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl md:drop-shadow-4xl drop-shadow-4xl font-extrabold eb-garamond-google mb-4 -tracking-normal sm:leading-tight">
+                      <h1 className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl
+                       md:drop-shadow-4xl drop-shadow-4xl font-extrabold eb-garamond-google mb-4 -tracking-normal sm:leading-tight">
                         Finest Custom
                         <br />
                         Suits in PAK
@@ -181,25 +182,8 @@ function App() {
 
                   {/* Info Card */}
                   <div
-                    className="
-                      w-full
-                      p-4
-                      absolute
-                      top-[90vh] left-0
-                      md:absolute
-                      md:left-1/2
-                      md:top-[75vh]
-                      md:transform md:-translate-x-1/2
-                      md:w-[95%] md:max-w-5xl
-                      bg-white
-                      rounded-lg
-                      shadow-xl
-                      flex flex-col md:flex-row
-                      items-center
-                      justify-between
-                      gap-4 md:gap-0
-                      z-10
-                    "
+                    className="w-fullp-4absolutetop-[90vh] left-0md:absolutemd:left-1/2md:top-[75vh]md:transform md:-translate-x-1/2md:w-[95%]
+                     md:max-w-5xlbg-whiterounded-lgshadow-xlflex flex-col md:flex-rowitems-centerjustify-betweengap-4 md:gap-0z-10"
                   >
                     {/* QR Code - hidden on mobile */}
                     <div className="mb-4 md:mb-0 md:mr-8 flex-shrink-0 justify-center w-full md:w-auto hidden md:flex">
@@ -228,7 +212,8 @@ function App() {
                     {/* Button */}
                     <div className="mt-4 md:mt-0 flex-shrink-0 w-full md:w-auto flex justify-center md:justify-end">
                       <button
-                        className="btn-primary w-full sm:w-40 bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
+                        className="btn-primary w-full sm:w-40 bg-transparent text-[#C29A5C] 
+                        font-serif text-lg sm:text-xl border border-[#C29A5C]
                         hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded"
                         onClick={() => window.location.href = "/contact"}
                        >
@@ -280,7 +265,7 @@ function App() {
                   </div>
                 </section>
 
-                {/* NYC Custom Suit Section */}
+                {/* PAK Custom Suit Section */}
                 <section className="md:py-48 py-[50vh]  bg-white">
                   <div className="max-w-4xl mx-auto px-4 text-center">
                     <h2 className="text-4xl eb-garamond-google font-bold text-[#C29A5C] mb-8">
