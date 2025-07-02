@@ -182,8 +182,8 @@ function App() {
 
                   {/* Info Card */}
                   <div
-                    className="w-fullp-4absolutetop-[90vh] left-0md:absolutemd:left-1/2md:top-[75vh]md:transform md:-translate-x-1/2md:w-[95%]
-                     md:max-w-5xlbg-whiterounded-lgshadow-xlflex flex-col md:flex-rowitems-centerjustify-betweengap-4 md:gap-0z-10"
+                    className="w-full p-4 absolute top-[90vh] left-0 md:absolute md:left-1/2 md:top-[75vh] md:transform md:-translate-x-1/2 md:w-[95%]
+                     md:max-w-5xl bg-white rounded-lg shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 z-10"
                   >
                     {/* QR Code - hidden on mobile */}
                     <div className="mb-4 md:mb-0 md:mr-8 flex-shrink-0 justify-center w-full md:w-auto hidden md:flex">
