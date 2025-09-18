@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Process from "./pages/Process";
+import { Size } from "./pages/Size";
 import Contact from "./pages/Contact";
 import banner from "./assets/banner.jpg";
 import bespoke from "./assets/bespoke.jpg";
@@ -565,6 +566,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/process" element={<Process />} />
+          <Route path="/size" element={<Size />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>

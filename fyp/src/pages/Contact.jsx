@@ -16,11 +16,55 @@ const Contact = () => {
     setFormData({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
+  // (Removed duplicate handleChange)
+
+  const [showModal, setShowModal] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
+
+  // Save form data to localStorage on change
   const handleChange = (e) => {
-    setFormData({
+    const updatedFormData = {
       ...formData,
       [e.target.name]: e.target.value,
+    };
+    setFormData(updatedFormData);
+    localStorage.setItem("contactFormData", JSON.stringify(updatedFormData));
+  };
+
+  // Load localStorage data on mount
+  useState(() => {
+    const saved = localStorage.getItem("contactFormData");
+    if (saved) setFormData(JSON.parse(saved));
+  }, []);
+
+  // Show modal with form and localStorage data
+  const handlePreview = (e) => {
+    e.preventDefault();
+    setSubmittedData({
+      ...formData,
+      localStorage: JSON.parse(localStorage.getItem("contactFormData") || "{}"),
     });
+    setShowModal(true);
+  };
+
+  // Confirm and submit
+  const handleConfirm = async () => {
+    try {
+      await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      alert("Thank you for your inquiry! We will contact you soon.");
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      localStorage.removeItem("contactFormData");
+      setShowModal(false);
+    } catch (error) {
+      alert("There was an error sending your message. Please try again later.");
+    }
   };
 
   return (
@@ -46,32 +90,7 @@ const Contact = () => {
               Schedule a Consultation
             </h2>
 
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                try {
-                  await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Accept: "application/json",
-                    },
-                    body: JSON.stringify({
-                      name: formData.name,
-                      email: formData.email,
-                      phone: formData.phone,
-                      service: formData.service,
-                      message: formData.message,
-                    }),
-                  });
-                  alert("Thank you for your inquiry! We will contact you soon.");
-                  setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-                } catch (error) {
-                  alert("There was an error sending your message. Please try again later.");
-                }
-              }}
-              className="space-y-6"
-            >
+            <form onSubmit={handlePreview} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Full Name *
@@ -248,6 +267,116 @@ const Contact = () => {
           </motion.div>
         </div>
       </div>
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="bg-white dark:bg-[#232323] rounded-xl shadow-2xl max-w-lg w-full p-8 border border-[#C29A5C] relative"
+          >
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-[#C29A5C] text-2xl"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl eb-garamond-google font-bold text-[#C29A5C] dark:text-white mb-4 text-center">
+              Confirm Your Information
+            </h2>
+            <div className="mb-6">
+              <h3 className="font-semibold text-gray-800 dark:text-[#C29A5C] mb-2">Your information:</h3>
+              <ul className="space-y-1 text-gray-700 dark:text-gray-200 text-base">
+                <li>
+                  <span className="font-medium">Name:</span> {submittedData?.localStorage?.name || "-"}
+                </li>
+                <li>
+                  <span className="font-medium">Email:</span> {submittedData?.localStorage?.email || "-"}
+                </li>
+                <li>
+                  <span className="font-medium">Phone:</span> {submittedData?.localStorage?.phone || "-"}
+                </li>
+                <li>
+                  <span className="font-medium">Service:</span> {submittedData?.localStorage?.service || "-"}
+                </li>
+                <li>
+                  <span className="font-medium">Message:</span> {submittedData?.localStorage?.message || "-"}
+                </li>
+              </ul>
+            </div>
+            <div className="mb-6">
+              <h3 className="font-semibold text-gray-800 dark:text-[#C29A5C] mb-2">Your Size:</h3>
+              <ul className="space-y-1 text-gray-700 dark:text-gray-200 text-base">
+                {(() => {
+                  const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}");
+                  if (Object.keys(sizeForm).length === 0) {
+                    return <li>-</li>;
+                  }
+                  return Object.entries(sizeForm).map(([key, value]) => (
+                    <li key={key}>
+                      <span className="font-medium">{key}:</span> {value || "-"}
+                    </li>
+                  ));
+                })()}
+              </ul>
+            </div>
+            <div className="flex gap-4 justify-center">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-6 py-2 rounded-lg border border-[#C29A5C] text-[#C29A5C] bg-transparent hover:bg-[#C29A5C] hover:text-white font-semibold transition"
+              >
+                Edit
+              </button>
+              <button
+                onClick={async () => {
+                  // Gather both formData and sizeForm
+                  const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}");
+                  const allData = {
+                    ...formData,
+                    ...sizeForm,
+                  };
+                  try {
+                    // Send to your email
+                    await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                      },
+                      body: JSON.stringify(allData),
+                    });
+                    // Send to user's email
+                    if (formData.email) {
+                      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(formData.email)}`, {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                      },
+                      body: JSON.stringify({
+                        ...allData,
+                        message: "Your order is placed at Sew Divine. We will reach out to you soon!",
+                      }),
+                      });
+                    }
+                    alert("Thank you for your inquiry! We will contact you soon.");
+                    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+                    localStorage.removeItem("contactFormData");
+                    localStorage.removeItem("sizeForm");
+                    setShowModal(false);
+                  } catch (error) {
+                    alert("There was an error sending your message. Please try again later.");
+                  }
+                }}
+                className="px-6 py-2 rounded-lg bg-[#C29A5C] text-white font-semibold hover:bg-[#a37d3d] transition"
+              >
+                Confirm & Send
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };
