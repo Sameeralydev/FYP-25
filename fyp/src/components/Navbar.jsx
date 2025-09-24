@@ -12,6 +12,7 @@ import {
   faXTwitter,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -29,6 +30,10 @@ const Navbar = () => {
     { name: "Size", path: "/size" },
     { name: "Contact", path: "/contact" },
   ];
+
+  if (location.pathname === "/dashboard") {
+    return null; // Dashboard par navbar hide
+  }
 
   const socialLinks = [
     {
@@ -73,6 +78,10 @@ const Navbar = () => {
     }
   }, [lastScrollY]);
 
+  const { user } = useAuth();
+  
+
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -101,23 +110,43 @@ const Navbar = () => {
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-8">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    className={`relative px-3 py-2 text-lg font-bold transition-colors duration-200 eb-garamond-google ${location.pathname === item.path
-                      ? "text-gray-800 dark:text-white"
-                      : "text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
-                      }`}
-                  >
-                    {item.name}
-                    {location.pathname === item.path && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-800 dark:bg-white"
-                      />
-                    )}
-                  </Link>
+                  user ? (
+                    // agar login hai to direct link chale
+                    <Link
+                      key={item.name}
+                      to={item.path}
+                      className={`relative px-3 py-2 text-lg font-bold transition-colors duration-200 eb-garamond-google ${location.pathname === item.path
+                          ? "text-gray-800 dark:text-white"
+                          : "text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                        }`}
+                    >
+                      {item.name}
+                      {location.pathname === item.path && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-800 dark:bg-white"
+                        />
+                      )}
+                    </Link>
+                  ) : (
+                    // agar login nahi hai to click karte hi alert aur login pe bhej do
+                    <Link
+                      key={item.name}
+                      to="/login"
+                      onClick={(e) => {
+                        if (item.path !== "/") {
+                          e.preventDefault();
+                          alert("Please login first to access this page.");
+                          window.location.href = "/login"; // 👈 direct login page bhej do
+                        }
+                      }}
+                      className="relative px-3 py-2 text-lg font-bold transition-colors duration-200 eb-garamond-google text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                    >
+                      {item.name}
+                    </Link>
+                  )
                 ))}
+
               </div>
 
               {/* Login & Signup Buttons */}

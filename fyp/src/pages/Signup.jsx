@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate, Link } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
@@ -22,8 +22,8 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <form onSubmit={handleLogin} className="bg-white p-6 rounded shadow-md w-80">
-        <h2 className="text-xl font-bold mb-4">Login</h2>
+      <form onSubmit={handleSignup} className="bg-white p-6 rounded shadow-md w-80">
+        <h2 className="text-xl font-bold mb-4">Signup</h2>
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <input
           type="email"
@@ -39,12 +39,12 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="bg-blue-600 text-white py-2 w-full">Login</button>
+        <button className="bg-green-600 text-white py-2 w-full">Signup</button>
         <p className="mt-2 text-sm">
-          Don’t have an account? <Link to="/signup" className="text-blue-600">Signup</Link>
+          Already have an account? <Link to="/login" className="text-blue-600">Login</Link>
         </p>
       </form>
     </div>
   );
 }
-export default Login;
+export default Signup;

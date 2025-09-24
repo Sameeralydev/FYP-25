@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { db } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -49,25 +51,38 @@ const Contact = () => {
     setShowModal(true)
   }
 
-  // Confirm and submit
-  const handleConfirm = async () => {
-    try {
-      await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-      alert("Thank you for your inquiry! We will contact you soon.")
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
-      localStorage.removeItem("contactFormData")
-      setShowModal(false)
-    } catch (error) {
-      alert("There was an error sending your message. Please try again later.")
-    }
+const handleConfirm = async () => {
+  try {
+    const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}");
+    const allData = {
+      ...formData,
+      ...sizeForm,
+      createdAt: serverTimestamp(),
+    };
+
+    // ✅ Save to Firebase Firestore
+    await addDoc(collection(db, "contactForms"), allData);
+
+    // ✅ Send email via FormSubmit
+    await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(allData),
+    });
+
+    alert("✅ Your inquiry has been saved & sent successfully!");
+    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    localStorage.removeItem("contactFormData");
+    localStorage.removeItem("sizeForm");
+    setShowModal(false);
+  } catch (error) {
+    alert("❌ Error saving data: " + error.message);
   }
+};
+
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#1A1A1A] pt-20">
@@ -306,51 +321,61 @@ const Contact = () => {
               >
                 Edit
               </button>
-              <button
-                onClick={async () => {
-                  // Gather both formData and sizeForm
-                  const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}")
-                  const allData = {
-                    ...formData,
-                    ...sizeForm,
-                  }
-                  try {
-                    // Send to your email
-                    await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                      },
-                      body: JSON.stringify(allData),
-                    })
-                    // Send to user's email
-                    if (formData.email) {
-                      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(formData.email)}`, {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/json",
-                          Accept: "application/json",
-                        },
-                        body: JSON.stringify({
-                          ...allData,
-                          message: "Your order is placed at Sew Divine. We will reach out to you soon!",
-                        }),
-                      })
-                    }
-                    alert("Thank you for your inquiry! We will contact you soon.")
-                    setFormData({ name: "", email: "", phone: "", service: "", message: "" })
-                    localStorage.removeItem("contactFormData")
-                    localStorage.removeItem("sizeForm")
-                    setShowModal(false)
-                  } catch (error) {
-                    alert("There was an error sending your message. Please try again later.")
-                  }
-                }}
-                className="px-6 py-2 rounded-lg bg-[#C29A5C] text-white font-semibold hover:bg-[#a37d3d] transition"
-              >
-                Confirm & Send
-              </button>
+             <button
+  onClick={async () => {
+    // Gather both formData and sizeForm
+    const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}")
+    const allData = {
+      ...formData,
+      ...sizeForm,
+    }
+
+    try {
+      // 1. Save to Firestore
+      await addDoc(collection(db, "contactForms"), {
+        ...allData,
+        createdAt: serverTimestamp(),
+      })
+
+      // 2. Send to your email
+      await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(allData),
+      })
+
+      // 3. Send confirmation to user's email
+      if (formData.email) {
+        await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(formData.email)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            ...allData,
+            message: "Your order is placed at Sew Divine. We will reach out to you soon!",
+          }),
+        })
+      }
+
+      alert("✅ Thank you! Your inquiry has been saved & emailed successfully.")
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+      localStorage.removeItem("contactFormData")
+      localStorage.removeItem("sizeForm")
+      setShowModal(false)
+    } catch (error) {
+      alert("❌ Error: " + error.message)
+    }
+  }}
+  className="px-6 py-2 rounded-lg bg-[#C29A5C] text-white font-semibold hover:bg-[#a37d3d] transition"
+>
+  Confirm & Send
+</button>
+
             </div>
           </motion.div>
         </div>

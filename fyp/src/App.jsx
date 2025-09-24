@@ -14,6 +14,7 @@ import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Process from "./pages/Process";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import { Size } from "./pages/Size";
 import Contact from "./pages/Contact";
 import banner from "./assets/banner.jpg";
@@ -562,6 +563,7 @@ function App() {
           <Route path="/size" element={<Size />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
