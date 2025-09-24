@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from "framer-motion"
 
 const Process = () => {
@@ -75,7 +77,9 @@ const Process = () => {
               </div>
 
               <div className="flex-1">
-                <h2 className="text-2xl font-semibold eb-garamond-google text-gray-800 dark:text-[#C29A5C] mb-2">{step.title}</h2>
+                <h2 className="text-2xl font-semibold eb-garamond-google text-gray-800 dark:text-[#C29A5C] mb-2">
+                  {step.title}
+                </h2>
                 <p className="text-gray-600 dark:text-gray-300 mb-2 leading-relaxed">{step.description}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Duration: {step.duration}</p>
               </div>
@@ -94,8 +98,13 @@ const Process = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             6-8 weeks from initial consultation to delivery
           </p>
-          <button className="md:w-[35%] w-[85%] bg-transparent text-[#C29A5C] text-lg sm:text-xl border border-[#C29A5C]
-             hover:bg-[#C29A5C] hover:text-white px-8 py-3 eb-garamond-google font-semibold hover:scale-105 transition-transform duration-200" onClick={() => window.location.href = "/contact"}>Schedule Your Consultation</button>
+          <button
+            className="md:w-[35%] w-[85%] bg-transparent text-[#C29A5C] text-lg sm:text-xl border border-[#C29A5C]
+             hover:bg-[#C29A5C] hover:text-white px-8 py-3 eb-garamond-google font-semibold hover:scale-105 transition-transform duration-200"
+            onClick={() => (window.location.href = "/contact")}
+          >
+            Schedule Your Consultation
+          </button>
         </motion.div>
       </div>
     </div>

@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+"use client"
+
+import { useState } from "react"
+import { motion } from "framer-motion"
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,44 +10,44 @@ const Contact = () => {
     phone: "",
     service: "",
     message: "",
-  });
+  })
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for your inquiry! We will contact you soon.");
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-  };
+    e.preventDefault()
+    alert("Thank you for your inquiry! We will contact you soon.")
+    setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+  }
 
   // (Removed duplicate handleChange)
 
-  const [showModal, setShowModal] = useState(false);
-  const [submittedData, setSubmittedData] = useState(null);
+  const [showModal, setShowModal] = useState(false)
+  const [submittedData, setSubmittedData] = useState(null)
 
   // Save form data to localStorage on change
   const handleChange = (e) => {
     const updatedFormData = {
       ...formData,
       [e.target.name]: e.target.value,
-    };
-    setFormData(updatedFormData);
-    localStorage.setItem("contactFormData", JSON.stringify(updatedFormData));
-  };
+    }
+    setFormData(updatedFormData)
+    localStorage.setItem("contactFormData", JSON.stringify(updatedFormData))
+  }
 
   // Load localStorage data on mount
   useState(() => {
-    const saved = localStorage.getItem("contactFormData");
-    if (saved) setFormData(JSON.parse(saved));
-  }, []);
+    const saved = localStorage.getItem("contactFormData")
+    if (saved) setFormData(JSON.parse(saved))
+  }, [])
 
   // Show modal with form and localStorage data
   const handlePreview = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     setSubmittedData({
       ...formData,
       localStorage: JSON.parse(localStorage.getItem("contactFormData") || "{}"),
-    });
-    setShowModal(true);
-  };
+    })
+    setShowModal(true)
+  }
 
   // Confirm and submit
   const handleConfirm = async () => {
@@ -57,15 +59,15 @@ const Contact = () => {
           Accept: "application/json",
         },
         body: JSON.stringify(formData),
-      });
-      alert("Thank you for your inquiry! We will contact you soon.");
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-      localStorage.removeItem("contactFormData");
-      setShowModal(false);
+      })
+      alert("Thank you for your inquiry! We will contact you soon.")
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+      localStorage.removeItem("contactFormData")
+      setShowModal(false)
     } catch (error) {
-      alert("There was an error sending your message. Please try again later.");
+      alert("There was an error sending your message. Please try again later.")
     }
-  };
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#1A1A1A] pt-20">
@@ -81,20 +83,14 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <h2 className="text-3xl font-semibold eb-garamond-google text-gray-800 dark:text-[#C29A5C] mb-8">
               Schedule a Consultation
             </h2>
 
             <form onSubmit={handlePreview} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Full Name *
-                </label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name *</label>
                 <input
                   type="text"
                   name="name"
@@ -120,9 +116,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Phone Number
-                </label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
                 <input
                   type="tel"
                   name="phone"
@@ -151,9 +145,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
-                </label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -190,9 +182,7 @@ const Contact = () => {
                 <div className="flex items-start gap-4">
                   <div className="text-2xl">📍</div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 dark:text-white">
-                      Address
-                    </h3>
+                    <h3 className="font-semibold text-gray-800 dark:text-white">Address</h3>
                     <p className="text-gray-600 dark:text-gray-300">
                       132 GT. Road Lahore, PAKISTAN
                       <br />
@@ -204,33 +194,23 @@ const Contact = () => {
                 <div className="flex items-start gap-4">
                   <div className="text-2xl">📞</div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 dark:text-white">
-                      Phone
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      (042) 123-4567
-                    </p>
+                    <h3 className="font-semibold text-gray-800 dark:text-white">Phone</h3>
+                    <p className="text-gray-600 dark:text-gray-300">(042) 123-4567</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div className="text-2xl">✉️</div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 dark:text-white">
-                      Email
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      info@sewdivine.com
-                    </p>
+                    <h3 className="font-semibold text-gray-800 dark:text-white">Email</h3>
+                    <p className="text-gray-600 dark:text-gray-300">info@sewdivine.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div className="text-2xl">🕒</div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 dark:text-white">
-                      Hours
-                    </h3>
+                    <h3 className="font-semibold text-gray-800 dark:text-white">Hours</h3>
                     <p className="text-gray-600 dark:text-gray-300">
                       Monday - Saturday: 9:00 AM - 7:00 PM
                       <br />
@@ -242,9 +222,7 @@ const Contact = () => {
             </div>
 
             <div className="bg-gray-100 dark:bg-[#1f1f1f] dark:hover:bg-[#262626] p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
-                Why Choose Us?
-              </h3>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Why Choose Us?</h3>
               <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
@@ -309,15 +287,15 @@ const Contact = () => {
               <h3 className="font-semibold text-gray-800 dark:text-[#C29A5C] mb-2">Your Size:</h3>
               <ul className="space-y-1 text-gray-700 dark:text-gray-200 text-base">
                 {(() => {
-                  const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}");
+                  const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}")
                   if (Object.keys(sizeForm).length === 0) {
-                    return <li>-</li>;
+                    return <li>-</li>
                   }
                   return Object.entries(sizeForm).map(([key, value]) => (
                     <li key={key}>
                       <span className="font-medium">{key}:</span> {value || "-"}
                     </li>
-                  ));
+                  ))
                 })()}
               </ul>
             </div>
@@ -331,11 +309,11 @@ const Contact = () => {
               <button
                 onClick={async () => {
                   // Gather both formData and sizeForm
-                  const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}");
+                  const sizeForm = JSON.parse(localStorage.getItem("sizeForm") || "{}")
                   const allData = {
                     ...formData,
                     ...sizeForm,
-                  };
+                  }
                   try {
                     // Send to your email
                     await fetch("https://formsubmit.co/ajax/sameeraly2003@gmail.com", {
@@ -345,28 +323,28 @@ const Contact = () => {
                         Accept: "application/json",
                       },
                       body: JSON.stringify(allData),
-                    });
+                    })
                     // Send to user's email
                     if (formData.email) {
                       await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(formData.email)}`, {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                      },
-                      body: JSON.stringify({
-                        ...allData,
-                        message: "Your order is placed at Sew Divine. We will reach out to you soon!",
-                      }),
-                      });
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                          Accept: "application/json",
+                        },
+                        body: JSON.stringify({
+                          ...allData,
+                          message: "Your order is placed at Sew Divine. We will reach out to you soon!",
+                        }),
+                      })
                     }
-                    alert("Thank you for your inquiry! We will contact you soon.");
-                    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-                    localStorage.removeItem("contactFormData");
-                    localStorage.removeItem("sizeForm");
-                    setShowModal(false);
+                    alert("Thank you for your inquiry! We will contact you soon.")
+                    setFormData({ name: "", email: "", phone: "", service: "", message: "" })
+                    localStorage.removeItem("contactFormData")
+                    localStorage.removeItem("sizeForm")
+                    setShowModal(false)
                   } catch (error) {
-                    alert("There was an error sending your message. Please try again later.");
+                    alert("There was an error sending your message. Please try again later.")
                   }
                 }}
                 className="px-6 py-2 rounded-lg bg-[#C29A5C] text-white font-semibold hover:bg-[#a37d3d] transition"
@@ -378,7 +356,7 @@ const Contact = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

@@ -8,10 +8,12 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Process from "./pages/Process";
+import Login from "./pages/Login";
 import { Size } from "./pages/Size";
 import Contact from "./pages/Contact";
 import banner from "./assets/banner.jpg";
@@ -43,6 +45,7 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 
+
 function App() {
   const [activeStep, setActiveStep] = useState(0);
   const { scrollY } = useScrollAnimation();
@@ -54,16 +57,6 @@ function App() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
-  // Handle consultation booking
-  const handleConsultationClick = () => {
-    alert("Consultation booking functionality would be implemented here!");
-  };
-
-  // Handle appointment booking
-  const handleAppointmentClick = () => {
-    alert("Appointment booking functionality would be implemented here!");
-  };
 
   // Process steps data
   const processSteps = [
@@ -568,6 +561,8 @@ function App() {
           <Route path="/process" element={<Process />} />
           <Route path="/size" element={<Size />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </ThemeProvider>

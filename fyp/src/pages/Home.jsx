@@ -144,76 +144,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl font-light text-gray-800 dark:text-white mb-8"
-          >
-            A New York Custom Suit Tailored in NYC
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-12"
-          >
-            Experience the pinnacle of sartorial excellence with our handcrafted custom suits. Every stitch tells a
-            story of tradition, craftsmanship, and uncompromising quality that has defined New York's finest tailoring
-            for generations.
-          </motion.p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Premium Fabrics",
-                desc: "Sourced from the world's finest mills",
-                img: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=250&h=300&fit=crop",
-              },
-              {
-                title: "Expert Craftsmanship",
-                desc: "Hand-tailored by master artisans",
-                img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=250&h=300&fit=crop",
-              },
-              {
-                title: "Perfect Fit",
-                desc: "Tailored to your exact measurements",
-                img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=250&h=300&fit=crop",
-              },
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
-              >
-                <div className="overflow-hidden">
-                  <motion.img
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                    src={service.img}
-                    alt={service.title}
-                    className="w-full h-64 object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-medium text-gray-800 dark:text-white mb-2">{service.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{service.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Process Steps */}
       <section className="py-20 bg-stone-50 dark:bg-gray-800">
@@ -307,46 +238,6 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl font-light text-gray-800 dark:text-white mb-8"
-          >
-            Ready to Create Your Perfect Suit?
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-lg text-gray-600 dark:text-gray-300 mb-8"
-          >
-            Schedule your consultation today and experience the finest in bespoke tailoring.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="space-x-4"
-          >
-            <Link to="/contact" className="btn-primary">
-              Schedule Consultation
-            </Link>
-            <Link to="/gallery" className="btn-secondary">
-              View Our Work
-            </Link>
-          </motion.div>
         </div>
       </section>
     </div>

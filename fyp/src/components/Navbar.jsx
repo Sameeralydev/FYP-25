@@ -120,23 +120,24 @@ const Navbar = () => {
                 ))}
               </div>
 
-              {/* Social Links & Theme Toggle */}
+              {/* Login & Signup Buttons */}
               <div className="hidden md:flex items-center space-x-4">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 1.95 }}
-                    className="text-xl md:text-gray-900 dark:text-white transition-opacity duration-200"
-                    title={social.name}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-
+                <Link
+                  to="/login"
+                  className="px-4 py-1 rounded-lg eb-garamond-google font-semibold transition-colors duration-200
+                    border-2 border-gray-800 text-gray-800 dark:border-white dark:text-white
+                    hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="px-4 py-1 rounded-lg eb-garamond-google font-semibold transition-colors duration-200
+                    border-2 border-gray-800 text-gray-800 dark:border-white dark:text-white
+                    hover:bg-gray-800 hover:text-white dark:hover:bg-white dark:hover:text-gray-900"
+                >
+                  Signup
+                </Link>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
