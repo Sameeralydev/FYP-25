@@ -21,7 +21,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex dark:bg-[#1A1A1A] justify-center items-center min-h-screen">
       <form onSubmit={handleSignup} className="bg-white p-6 rounded shadow-md w-80">
         <h2 className="text-xl font-bold mb-4">Signup</h2>
         {error && <p className="text-red-500 text-sm">{error}</p>}

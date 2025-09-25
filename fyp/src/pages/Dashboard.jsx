@@ -1,82 +1,114 @@
-
-import React from "react";
-import { useAuth } from "../context/AuthContext";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { collection, query, where, getDocs } from "firebase/firestore"
+import { db, auth } from "../firebase"
+import { signOut } from "firebase/auth"
+import { replace, useNavigate } from "react-router-dom"
 
 const Dashboard = () => {
-  const { user } = useAuth();
-  const navigate = useNavigate();
+  const [forms, setForms] = useState([])
+  const [userEmail, setUserEmail] = useState("")
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUserEmail(user.email)
+
+        // ✅ Sirf us email ka data lao jo login hua hai
+        try {
+          const q = query(
+            collection(db, "contactForms"),
+            where("email", "==", user.email)
+          )
+          const querySnapshot = await getDocs(q)
+          const data = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          setForms(data)
+        } catch (error) {
+          console.error("Error fetching user data:", error)
+        }
+      } else {
+        setUserEmail("")
+        setForms([])
+      }
+    })
+
+    return () => unsubscribe()
+  }, [])
 
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/");
-    } catch (error) {
-      console.error("Logout error:", error.message);
-    }
-  };
+    await signOut(auth)
+    navigate("/login")
+  }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md p-6 hidden md:block">
-        <h2 className="text-xl font-bold mb-6 text-blue-600">My Dashboard</h2>
-        <nav className="space-y-4">
-          <a href="#" className="block text-gray-700 hover:text-blue-600">
-            Overview
-          </a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600">
-            Reports
-          </a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600">
-            Settings
-          </a>
-        </nav>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1 p-6">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">
-            Welcome, {user?.email || "Guest"}
-          </h1>
+    <div className="p-8 eb-garamond-google bg-gray-50 min-h-screen">
+      {/* 🔹 Top bar */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">
+          Welcome{userEmail ? `, ${userEmail}` : ""}
+        </h1>
+        <div className="flex gap-3">
+          <button
+            onClick={() => navigate("/",{replace: true})}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
+            Home
+          </button>
           <button
             onClick={handleLogout}
-            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
           >
             Logout
           </button>
         </div>
+      </div>
 
-        {/* Dashboard Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-lg font-semibold text-gray-700">Users</h3>
-            <p className="mt-2 text-3xl font-bold text-blue-600">1,245</p>
-            <p className="text-sm text-gray-500 mt-1">Active this month</p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-lg font-semibold text-gray-700">Revenue</h3>
-            <p className="mt-2 text-3xl font-bold text-green-600">$8,490</p>
-            <p className="text-sm text-gray-500 mt-1">This month</p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-            <h3 className="text-lg font-semibold text-gray-700">Projects</h3>
-            <p className="mt-2 text-3xl font-bold text-purple-600">27</p>
-            <p className="text-sm text-gray-500 mt-1">Ongoing</p>
-          </div>
-        </div>
-      </main>
+      {/* 🔹 Table */}
+      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+        <table className="w-full border-collapse">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="border px-4 py-2 text-left">ID</th>
+              <th className="border px-4 py-2 text-left">Email</th>
+              <th className="border px-4 py-2 text-left">Name</th>
+              <th className="border px-4 py-2 text-left">Phone</th>
+              <th className="border px-4 py-2 text-left">Service</th>
+              <th className="border px-4 py-2 text-left">Message</th>
+              <th className="border px-4 py-2 text-left">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {forms.length > 0 ? (
+              forms.map((form) => (
+                <tr key={form.id} className="hover:bg-gray-50">
+                  <td className="border px-4 py-2">{form.id}</td>
+                  <td className="border px-4 py-2">{form.email}</td>
+                  <td className="border px-4 py-2">{form.name}</td>
+                  <td className="border px-4 py-2">{form.phone}</td>
+                  <td className="border px-4 py-2">{form.service}</td>
+                  <td className="border px-4 py-2">{form.message}</td>
+                  <td className="border px-4 py-2">
+                    {form.createdAt?.toDate
+                      ? form.createdAt.toDate().toLocaleString()
+                      : "-"}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="text-center py-4 text-gray-500">
+                  No records found for your email.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

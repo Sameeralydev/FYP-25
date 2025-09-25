@@ -45,6 +45,7 @@ import {
   faXTwitter,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
+import { useAuth } from "./context/AuthContext";
 
 
 function App() {
@@ -145,6 +146,8 @@ function App() {
       alt: "Adjustments",
     }
   ];
+  const { user } = useAuth();
+
 
   return (
     <ThemeProvider>
@@ -207,13 +210,20 @@ function App() {
                     {/* Button */}
                     <div className="mt-4 md:mt-0 flex-shrink-0 w-full md:w-auto flex justify-center md:justify-end">
                       <button
-                        className="btn-primary w-full sm:w-40 bg-transparent text-[#C29A5C] 
-                        font-serif text-lg sm:text-xl border border-[#C29A5C]
-                        hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded"
-                        onClick={() => window.location.href = "/contact"}
-                       >
-                        Contact Us
-                      </button>
+  className="btn-primary w-full sm:w-40 bg-transparent text-[#C29A5C] 
+    font-serif text-lg sm:text-xl border border-[#C29A5C]
+    hover:bg-[#C29A5C] hover:text-white duration-200 py-2 sm:py-3 rounded"
+  onClick={() => {
+    if (!user) {
+      alert("Please login first to access Contact page.");
+      window.location.href = "/login"; // 👈 Direct login page bhej do
+    } else {
+      window.location.href = "/contact"; // 👈 Agar login hai to Contact khul jaye
+    }
+  }}
+>
+  Contact Us
+</button>
                     </div>
                   </div>
                 </section>
@@ -350,7 +360,13 @@ function App() {
                           <Button
                             className="bg-transparent text-[#C29A5C] text-lg sm:text-xl border border-[#C29A5C]
                             hover:bg-[#C29A5C] hover:text-white px-8 py-3 eb-garamond-google font-semibold hover:scale-105 transition-transform duration-200"
-                            onClick={() => window.location.href = "/contact"}
+                             onClick={() => {
+    if (!user) {
+      alert("Please login first to access Contact page.");
+      window.location.href = "/login"; // 👈 Direct login page bhej do
+    } else {
+      window.location.href = "/contact"; // 👈 Agar login hai to Contact khul jaye
+    }}}
                           >
                             Schedule Consultation
                           </Button>
@@ -489,7 +505,13 @@ function App() {
                               <Button
                               className="bg-transparent text-[#C29A5C] font-serif text-lg sm:text-xl border border-[#C29A5C]
                               hover:bg-[#C29A5C] hover:text-white px-8 py-3 hover:scale-105 transition-transform duration-200"
-                              onClick={() => window.location.href = "/contact"}
+                               onClick={() => {
+    if (!user) {
+      alert("Please login first to access Contact page.");
+      window.location.href = "/login"; // 👈 Direct login page bhej do
+    } else {
+      window.location.href = "/contact"; // 👈 Agar login hai to Contact khul jaye
+    }}}
                               >
                               Book Appointment
                               </Button>
